@@ -48,7 +48,7 @@ public class TestingDataModel : MonoBehaviour {
 		foreach (Team t in TeamManager.Instance.GetTeams())
 		{
 			output = t.Name + "\r\n";
-			List<Lane> lanes = LaneManager.Instance.GetTeamLanes(t);;
+			List<Lane> lanes = LaneManager.Instance.GetTeamLanes(t);
 			foreach (string playerName in t.GetPlayers())
 			{
 				int laneName = lanes[Random.Range(0, lanes.Count)].LaneName;

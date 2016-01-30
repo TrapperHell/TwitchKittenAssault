@@ -41,6 +41,16 @@ public class Token : MonoBehaviour, IPoolable {
 	
 	}
 
+	private void Defend(int opposingStrength)
+	{
+		_strength -= opposingStrength;
+
+		if (_strength <= 0)
+		{
+			PoolManager.Instance.TokenPool.Release(this);
+		}
+	}
+
 
 
 

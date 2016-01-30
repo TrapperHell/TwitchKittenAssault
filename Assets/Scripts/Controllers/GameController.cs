@@ -74,7 +74,7 @@ public class GameController : MonoSingleton <GameController> {
 
 		foreach (Lane l in lanes)
 		{
-			
+			l.FirePulse();
 		}
 	}
 }

@@ -83,11 +83,13 @@ public class Token : MonoBehaviour, IPoolable {
 				}
 			}
 		}
-		else if (string.Equals(collider.tag.ToLower(), _baseTag.ToLower()))
+
+		if (string.Equals(collider.tag.ToLower(), _baseTag.ToLower()))
 		{
 			Team t = collider.GetComponent<Team>();
 			if (t != null)
 			{
+				D.log("Base HIT!!!");
 				if (t != _sourceTeam)
 				{
 					t.Hit(Strength);

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Lane {
 
@@ -113,6 +114,15 @@ public class Lane {
 		return _team2Players;
 	}
 
+	public void FirePulse()
+	{
+		Vector3 t1Pos = _team1.TeamBase.position;
+		Vector3 t2Pos = _team2.TeamBase.position;
+
+		Token team1Token = PoolManager.Instance.TokenPool.Consume(new TokenPoolData(GameLogicController.Instance.TEMPactivetokenparent, _team1Players.Count));
+		Token team2Token = PoolManager.Instance.TokenPool.Consume(new TokenPoolData(GameLogicController.Instance.TEMPactivetokenparent, _team2Players.Count));
+
+	}
 
 	#endregion
 

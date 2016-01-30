@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Team {
 
@@ -10,6 +11,7 @@ public class Team {
 	private string _teamName;
 	private List<string> _players;
 
+	private RectTransform _rectTransform;
 	#endregion
 
 	#region Accessors
@@ -30,6 +32,14 @@ public class Team {
 		get
 		{
 			return _players.Count;
+		}
+	}
+
+	public RectTransform TeamBase
+	{
+		get
+		{
+			return _rectTransform;
 		}
 	}
 	#endregion
@@ -58,6 +68,8 @@ public class Team {
 	{
 		return _players.Contains(playerName);
 	}
+
+
 	#endregion
 
 }

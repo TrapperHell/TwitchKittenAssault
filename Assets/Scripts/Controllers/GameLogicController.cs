@@ -10,7 +10,8 @@ public class GameLogicController : MonoSingleton <GameLogicController> {
 	
 	
 	#region Public Properties
-
+	public int TEMPtokenpoolsize = 10;
+	public Transform TEMPactivetokenparent;
 	#endregion
 
 	#region Private Properties

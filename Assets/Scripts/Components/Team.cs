@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent (typeof (RectTransform))]
+[RequireComponent (typeof (Transform))]
 public class Team : MonoBehaviour {
 
 	#region Public Properties
@@ -12,7 +12,7 @@ public class Team : MonoBehaviour {
 	[SerializeField] private string _teamName;
 
 	private List<string> _players;
-	private RectTransform _rectTransform;
+	private Transform _transform;
 	private int _health;
 	#endregion
 
@@ -37,11 +37,11 @@ public class Team : MonoBehaviour {
 		}
 	}
 
-	public RectTransform TeamBase
+	public Transform TeamBase
 	{
 		get
 		{
-			return _rectTransform;
+			return _transform;
 		}
 	}
 	#endregion
@@ -49,7 +49,7 @@ public class Team : MonoBehaviour {
 	#region Methods
 	void Awake()
 	{
-		_rectTransform = GetComponent<RectTransform>();
+		_transform = GetComponent<Transform>();
 		_players = new List<string>();
 		_health = TeamManager.Instance.StartingHealth;
 	}

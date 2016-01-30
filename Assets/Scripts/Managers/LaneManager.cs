@@ -13,9 +13,6 @@ public class LaneManager : MonoSingleton <LaneManager> {
 	#endregion
 
 	#region Private Properties
-	[SerializeField] private Lane _lanePrefab;
-
-
 	[SerializeField] private List<Lane> _lanes;
 	#endregion
 

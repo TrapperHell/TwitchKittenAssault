@@ -11,6 +11,7 @@ public class Token : MonoBehaviour, IPoolable {
 	[SerializeField] private string _tokenTag = "Token";
 	[SerializeField] private string _baseTag = "Base";
 	private int _strength;
+	private Team _sourceTeam;
 
 	#endregion
 
@@ -25,6 +26,18 @@ public class Token : MonoBehaviour, IPoolable {
 		private set
 		{
 			_strength = value;
+		}
+	}
+
+	public Team SourceTeam
+	{
+		get
+		{
+			return _sourceTeam;
+		}
+		private set
+		{
+			_sourceTeam = value;
 		}
 	}
 	#endregion
@@ -55,14 +68,17 @@ public class Token : MonoBehaviour, IPoolable {
 			Token other = collider.GetComponent<Token>();
 			if (other != null)
 			{
-				int thisStrength = Strength;
-				int otherStrength = other.Strength;
-
-				if (thisStrength >= otherStrength)
+				if (_sourceTeam != other.SourceTeam)
 				{
-					//See assumption above
-					other.GetHit(thisStrength);
-					GetHit(otherStrength);
+					int thisStrength = Strength;
+					int otherStrength = other.Strength;
+
+					if (thisStrength >= otherStrength)
+					{
+						//See assumption above
+						other.GetHit(thisStrength);
+						GetHit(otherStrength);
+					}
 				}
 			}
 		}
@@ -71,10 +87,13 @@ public class Token : MonoBehaviour, IPoolable {
 			Team t = collider.GetComponent<Team>();
 			if (t != null)
 			{
-				t.Hit(Strength);
+				if (t != _sourceTeam)
+				{
+					t.Hit(Strength);
 
-				_strength = 0; //Just to be safe
-				PoolManager.Instance.TokenPool.Release(this);
+					_strength = 0; //Just to be safe
+					PoolManager.Instance.TokenPool.Release(this);
+				}
 			}
 		}
 	}
@@ -99,14 +118,16 @@ public class Token : MonoBehaviour, IPoolable {
 	/// </summary>
 	public class PoolData
 	{
-		public PoolData(Transform parentTransform, int strength)
+		public PoolData(Transform parentTransform, int strength, Team sourceTeam)
 		{
 			this.Strength = strength;
 			this.ParentTransform = parentTransform;
+			this.SourceTeam = sourceTeam;
 		}
 
 		public int Strength { get; private set; }
 		public Transform ParentTransform { get; private set; }
+		public Team SourceTeam { get; private set; }
 	}
 
 	public void Consume(IPoolData _data)
@@ -114,6 +135,7 @@ public class Token : MonoBehaviour, IPoolable {
 		TokenPoolData data = (TokenPoolData)_data;
 
 		_strength = data.Strength;
+		_sourceTeam = data.SourceTeam;
 		gameObject.SetActive(true);
 		transform.SetParent(data.ParentTransform, false);
 	}

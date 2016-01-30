@@ -7,14 +7,16 @@ public class TokenPoolData : IPoolData
 	#region Private Properties
 	private Transform _parentTransform;
 	private int _strength;
+	private Team _sourceTeam;
 
 	#endregion
 
 
-	public TokenPoolData(Transform parentTransform, int strength)
+	public TokenPoolData(Transform parentTransform, int strength, Team sourceTeam)
 	{
 		_parentTransform = parentTransform;
 		_strength = strength;
+		_sourceTeam = sourceTeam;
 	}
 
 	#region Accessors
@@ -27,6 +29,8 @@ public class TokenPoolData : IPoolData
 		}
 	}
 
+
+
 	public int Strength
 	{
 		get
@@ -35,5 +39,11 @@ public class TokenPoolData : IPoolData
 		}
 	}
 
-	#endregion
+	public Team SourceTeam
+	{
+		get
+		{
+			return _sourceTeam;
+		}
+	}	#endregion
 }

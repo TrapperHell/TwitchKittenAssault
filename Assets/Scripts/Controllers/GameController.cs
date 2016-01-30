@@ -13,7 +13,7 @@ public class GameController : MonoSingleton <GameController> {
 	#endregion
 
 	#region Private Properties
-	[SerializeField] private float _pulseIntervalInMs = 1000;
+	[SerializeField] private float _pulseIntervalInS = 1;
 
 	private float _lastPulseTime;
 	#endregion
@@ -29,7 +29,7 @@ public class GameController : MonoSingleton <GameController> {
 
 	// Update is called once per frame
 	void Update () {
-		if (Time.time > _lastPulseTime + _pulseIntervalInMs)
+		if (Time.time >= _lastPulseTime + _pulseIntervalInS)
 		{
 			_lastPulseTime = Time.time;
 
@@ -71,7 +71,7 @@ public class GameController : MonoSingleton <GameController> {
 	private void FirePulse()
 	{
 		List<Lane> lanes = LaneManager.Instance.GetLanes();
-
+		D.log("Start firing");
 		foreach (Lane l in lanes)
 		{
 			l.FirePulse();

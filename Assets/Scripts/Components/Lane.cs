@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class Lane {
+public class Lane : MonoBehaviour {
 
 	#region Public Properties
 
 	#endregion
 
 	#region Private Properties
-	private int _laneName;
-	private Team _team1;
-	private Team _team2;
+	[SerializeField] private int _laneName;
+	[SerializeField] private Team _team1;
+	[SerializeField] private Team _team2;
 
 	private List<string> _team1Players;
 	private List<string> _team2Players;
@@ -44,14 +45,14 @@ public class Lane {
 
 
 	#region Methods
-	public Lane(int laneName, Team team1, Team team2)
+	void Awake()
 	{
-		_laneName = laneName;
-		_team1 = team1;
-		_team2 = team2;
-
 		_team1Players = new List<string>();
 		_team2Players = new List<string>();
+	}
+
+	void Start()
+	{
 	}
 
 	public bool ConnectedToTeam(Team t)
@@ -113,6 +114,15 @@ public class Lane {
 		return _team2Players;
 	}
 
+	public void FirePulse()
+	{
+		Vector3 t1Pos = _team1.TeamBase.position;
+		Vector3 t2Pos = _team2.TeamBase.position;
+
+		Token team1Token = PoolManager.Instance.TokenPool.Consume(new TokenPoolData(transform, _team1Players.Count));
+		Token team2Token = PoolManager.Instance.TokenPool.Consume(new TokenPoolData(transform, _team2Players.Count));
+
+	}
 
 	#endregion
 

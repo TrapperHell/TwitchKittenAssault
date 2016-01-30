@@ -13,11 +13,13 @@ public class GameController : MonoSingleton <GameController> {
 	#endregion
 
 	#region Private Properties
+	[SerializeField] private float _pulseIntervalInMs = 1000;
 
+	private float _lastPulseTime;
 	#endregion
 
 	protected override void AwakeEx () {
-
+		_lastPulseTime = 0;
 	}
 
 	// Use this for initialization
@@ -27,7 +29,12 @@ public class GameController : MonoSingleton <GameController> {
 
 	// Update is called once per frame
 	void Update () {
+		if (Time.time > _lastPulseTime + _pulseIntervalInMs)
+		{
+			_lastPulseTime = Time.time;
 
+			FirePulse();
+		}
 	}
 
 	public void RegisterPlayer(string playerName)
@@ -58,6 +65,16 @@ public class GameController : MonoSingleton <GameController> {
 					}
 				}
 			}
+		}
+	}
+
+	private void FirePulse()
+	{
+		List<Lane> lanes = LaneManager.Instance.GetLanes();
+
+		foreach (Lane l in lanes)
+		{
+			l.FirePulse();
 		}
 	}
 }

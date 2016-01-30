@@ -3,6 +3,7 @@ using Assets.Scripts.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using UnityEngine;
 
 namespace Assets.Scripts.Managers
 {
@@ -57,10 +58,14 @@ namespace Assets.Scripts.Managers
                 ICommand command = ParseMessage(message);
                 if (command != null)
                 {
+                    Debug.Log(String.Format("{0} says '{1}' => {2}", userName, message, command.GetType().Name));
+
                     command.UserName = userName;
 
                     CommandRouter.RouteCommand(command);
                 }
+                else
+                    Debug.Log(String.Format("{0} says '{1}' => ?", userName, message));
             }
         }
 

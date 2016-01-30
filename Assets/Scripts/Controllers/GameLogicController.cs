@@ -11,6 +11,7 @@ public class GameLogicController : MonoSingleton <GameLogicController> {
 	
 	#region Public Properties
 	public int tokenInitialPoolSize = 10;
+	public TwitchIRC twitchChat;
 	#endregion
 
 	#region Private Properties
@@ -31,7 +32,7 @@ public class GameLogicController : MonoSingleton <GameLogicController> {
 	
 	#region Methods
 	void Start () {
-		
+		twitchChat.messageRecievedEvent.AddListener(Assets.Scripts.Managers.ChatManager.ParseRawMessage);
 	}
 	
 	protected override void AwakeEx () {

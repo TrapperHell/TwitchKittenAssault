@@ -10,6 +10,7 @@ public class Token : MonoBehaviour, IPoolable {
 	#region Private Properties
 	[SerializeField] private string _tokenTag = "Token";
 	[SerializeField] private string _baseTag = "Base";
+	[SerializeField] private SpriteRenderer _spriteRenderer;
 	private int _strength;
 	private Team _sourceTeam;
 
@@ -136,6 +137,7 @@ public class Token : MonoBehaviour, IPoolable {
 
 		_strength = data.Strength;
 		_sourceTeam = data.SourceTeam;
+		_spriteRenderer.color = data.SourceTeam.TeamColour;
 		gameObject.SetActive(true);
 		transform.SetParent(data.ParentTransform, false);
 	}

@@ -75,6 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tokenTag: Token
   _baseTag: Base
+  _spriteRenderer: {fileID: 21287906}
 --- !u!212 &21287906
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -133,6 +134,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 4384f9a5d17152a4895eabedbddf79db,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: _spriteRenderer
+      value: 
+      objectReference: {fileID: 21287906}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 166354}

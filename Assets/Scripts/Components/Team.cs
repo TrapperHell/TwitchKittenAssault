@@ -10,6 +10,7 @@ public class Team : MonoBehaviour {
 
 	#region Private Properties
 	[SerializeField] private string _teamName;
+	[SerializeField] private Color _teamColour;
 
 	private List<string> _players;
 	private Transform _transform;
@@ -42,6 +43,14 @@ public class Team : MonoBehaviour {
 		get
 		{
 			return _transform;
+		}
+	}
+
+	public Color TeamColour
+	{
+		get
+		{
+			return _teamColour;
 		}
 	}
 	#endregion

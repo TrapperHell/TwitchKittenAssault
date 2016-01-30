@@ -742,6 +742,7 @@ GameObject:
   - 114: {fileID: 638893892}
   - 114: {fileID: 638893891}
   - 114: {fileID: 638893893}
+  - 114: {fileID: 638893894}
   m_Layer: 0
   m_Name: GameLogicController
   m_TagString: Untagged
@@ -789,6 +790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tokenInitialPoolSize: 10
+  twitchChat: {fileID: 638893894}
 --- !u!4 &638893890
 Transform:
   m_ObjectHideFlags: 0
@@ -836,11 +838,25 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 638893886}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ad836ead17df8948b3b8960684991e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &638893894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 638893886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29041451efa349408dae55fd08e0bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oauth: 
+  nickName: 
+  channelName: 
 --- !u!1 &724650889
 GameObject:
   m_ObjectHideFlags: 0

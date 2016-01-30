@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Team {
+[RequireComponent (typeof (RectTransform))]
+public class Team : MonoBehaviour {
 
 	#region Public Properties
 
 	#endregion
 
 	#region Private Properties
-	private string _teamName;
-	private List<string> _players;
+	[SerializeField] private string _teamName;
 
+	private List<string> _players;
 	private RectTransform _rectTransform;
 	#endregion
 
@@ -45,10 +46,15 @@ public class Team {
 	#endregion
 
 	#region Methods
-	public Team(string teamName)
+	void Awake()
 	{
-		_teamName = teamName;
+		_rectTransform = GetComponent<RectTransform>();
 		_players = new List<string>();
+	}
+
+	void Start()
+	{
+		
 	}
 
 	public List<string> GetPlayers()

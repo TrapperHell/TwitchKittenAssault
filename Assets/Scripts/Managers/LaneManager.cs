@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class LaneManager : Singleton <LaneManager> {
+public class LaneManager : MonoSingleton <LaneManager> {
 
 	#region Constants
 
@@ -13,15 +13,11 @@ public class LaneManager : Singleton <LaneManager> {
 	#endregion
 
 	#region Private Properties
+	[SerializeField] private Lane _lanePrefab;
 
 
-	private List<Lane> _lanes = new List<Lane>();
+	[SerializeField] private List<Lane> _lanes;
 	#endregion
-
-	public void AddLane(Team t1, Team t2)
-	{
-		_lanes.Add(new Lane(_lanes.Count, t1, t2));
-	}
 
 	public List<Lane> GetLanes()
 	{

@@ -13,28 +13,12 @@ public class TeamManager : MonoSingleton <TeamManager> {
 	#endregion
 
 	#region Private Properties
-	[SerializeField][Range(1, 5)] private int _numberOfTeams = 3;
-	[SerializeField][Range(1, 5)] private int _lanesPerTeam = 1;
-
-    private List<Team> _teams = new List<Team>();
+    [SerializeField] private List<Team> _teams = new List<Team>();
 	#endregion
     
 	protected override void AwakeEx ()
     {
-        for (int i = 0; i < _numberOfTeams; i++)
-        {
-			Team tNew = new Team("Team " + i);
-
-			foreach (Team t in _teams)
-			{
-				for (int l = 0; l < _lanesPerTeam; l++)
-				{
-					LaneManager.Instance.AddLane(tNew, t);
-				}
-			}
-
-			_teams.Add(tNew);
-        }
+        
     }
     
 	// Use this for initialization

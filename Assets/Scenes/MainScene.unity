@@ -85,6 +85,33 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &106094218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 106094219}
+  m_Layer: 0
+  m_Name: Token pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &106094219
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106094218}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1940335787}
+  m_RootOrder: 0
 --- !u!1 &638893886
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +123,8 @@ GameObject:
   - 114: {fileID: 638893889}
   - 114: {fileID: 638893888}
   - 114: {fileID: 638893887}
+  - 114: {fileID: 638893892}
+  - 114: {fileID: 638893891}
   m_Layer: 0
   m_Name: GameLogicController
   m_TagString: Untagged
@@ -114,8 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca73accfae294651a6803b8ace6967f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numberOfTeams: 3
-  _lanesPerTeam: 1
+  _teams: []
 --- !u!114 &638893888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TEMPtokenpoolsize: 10
-  TEMPactivetokenparent: {fileID: 0}
   _gameVersion: 0.1
 --- !u!4 &638893890
 Transform:
@@ -151,9 +178,36 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1940335787}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &638893891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 638893886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59056aa0ed84d4328ae33676d620d667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tokenPrefab: {fileID: 11495024, guid: 3d8cca9ca16154fdca55db9fb80531ed, type: 2}
+  _tokenPoolParent: {fileID: 106094219}
+--- !u!114 &638893892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 638893886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2367e1928c745369456ed354862bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lanePrefab: {fileID: 0}
+  _lanes: []
 --- !u!1 &1390450344
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,33 +248,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!1 &1835095954
+--- !u!1 &1940335786
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 1835095955}
+  - 4: {fileID: 1940335787}
   m_Layer: 0
-  m_Name: Token
+  m_Name: Object pools
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1835095955
+--- !u!4 &1940335787
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1835095954}
+  m_GameObject: {fileID: 1940335786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Children:
+  - {fileID: 106094219}
+  m_Father: {fileID: 638893890}
+  m_RootOrder: 0
 --- !u!1 &2028541683
 GameObject:
   m_ObjectHideFlags: 0

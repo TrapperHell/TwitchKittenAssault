@@ -4,17 +4,19 @@ using UnityEngine;
 
 namespace WaypointControl
 {
-    public class TokenMoveManager
+	public class TokenMoveManager : MonoSingleton<TokenMoveManager>
     {
+		[SerializeField] private float moveSpeed = 100.0f;
+
         static readonly string[] _laneNames = new string[] { "1-2", "2-3", "3-1" };
 
-        public static void MoveToken(GameObject token, string fromTeam, string toTeam)
+        public void MoveToken(GameObject token, string fromTeam, string toTeam)
         {
             FollowDirection direction;
             string pathName = GetPathName(fromTeam, toTeam, out direction);
 
             if (!String.IsNullOrEmpty(pathName))
-                token.transform.FollowPath(pathName, 100f, FollowType.Once, direction);
+                token.transform.FollowPath(pathName, moveSpeed, FollowType.Once, direction);
 
             /*
             FollowPath() extension methods:
@@ -26,7 +28,7 @@ namespace WaypointControl
             */
         }
 
-        private static string GetPathName(string fromTeam, string toTeam, out FollowDirection direction)
+        private string GetPathName(string fromTeam, string toTeam, out FollowDirection direction)
         {
             direction = FollowDirection.Forward;
 
@@ -47,7 +49,7 @@ namespace WaypointControl
             return null;
         }
 
-        private static string Reverse(string s)
+        private string Reverse(string s)
         {
             char[] charArray = s.ToCharArray();
             Array.Reverse(charArray);

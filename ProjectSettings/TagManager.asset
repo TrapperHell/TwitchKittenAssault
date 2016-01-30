@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Token
   - Base
-  - Tokens
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e8c27be4bbc0b44bc04044c5f57640, type: 3}
+  m_Name: 3-1
+  m_EditorClassIdentifier: 
+  bShowPath: 0
+  pathName: 3-1
+  lineType: 0
+  lineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  pointSize: 0.5
+  points:
+  - {x: 1, y: -1.5, z: 0}
+  - {x: 0, y: 0, z: 0}
+  firstHandles:
+  - {x: -1, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
+  secondHandles:
+  - {x: 1, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
+  linePoints:
+  - {x: 1, y: -1.5, z: 0}
+  - {x: 0.95, y: -1.425, z: 0}
+  - {x: 0.9, y: -1.3499999, z: 0}
+  - {x: 0.85, y: -1.2750001, z: 0}
+  - {x: 0.8, y: -1.2, z: 0}
+  - {x: 0.75, y: -1.125, z: 0}
+  - {x: 0.7, y: -1.05, z: 0}
+  - {x: 0.65, y: -0.97499996, z: 0}
+  - {x: 0.59999996, y: -0.9, z: 0}
+  - {x: 0.54999995, y: -0.8249999, z: 0}
+  - {x: 0.49999994, y: -0.7499999, z: 0}
+  - {x: 0.44999993, y: -0.6749999, z: 0}
+  - {x: 0.39999992, y: -0.5999999, z: 0}
+  - {x: 0.3499999, y: -0.52499986, z: 0}
+  - {x: 0.2999999, y: -0.44999984, z: 0}
+  - {x: 0.24999988, y: -0.37499982, z: 0}
+  - {x: 0.19999987, y: -0.2999998, z: 0}
+  - {x: 0.14999986, y: -0.22499979, z: 0}
+  - {x: 0.099999845, y: -0.14999977, z: 0}
+  - {x: 0.049999833, y: -0.07499975, z: 0}
+  - {x: 0, y: 0, z: 0}

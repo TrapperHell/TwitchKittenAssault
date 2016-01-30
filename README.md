@@ -1,6 +1,6 @@
 # Twitch Kitten Assault
 
-Twitch Kitten Assault is a small game developed in 48 hours as part of the [2016 Global Game Jam](https://github.com/TrapperHell/TwitchKittenAssault).
+Twitch Kitten Assault is a small game developed in 48 hours as part of the [2016 Global Game Jam](http://globalgamejam.org/2016/games/twitch-kitten-assault).
 
 A kitten "MOBA" game in which Twitch viewers assume control of a cat sensei within one of the three cat castles (hereby known as 'catstles'). Each cat sensei is busy training the young kittens in the sacred art of jujutsu (and the lesser known, but nonetheless powerful, cat arts).
 

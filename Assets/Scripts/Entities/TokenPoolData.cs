@@ -3,47 +3,47 @@
 
 public class TokenPoolData : IPoolData
 {
+    #region Private Properties
+    private Transform _parentTransform;
+    private int _strength;
+    private Team _sourceTeam;
 
-	#region Private Properties
-	private Transform _parentTransform;
-	private int _strength;
-	private Team _sourceTeam;
+    #endregion
 
-	#endregion
+    public TokenPoolData(Transform parentTransform, int strength, Team sourceTeam)
+    {
+        _parentTransform = parentTransform;
+        _strength = strength;
+        _sourceTeam = sourceTeam;
+    }
 
+    #region Accessors
 
-	public TokenPoolData(Transform parentTransform, int strength, Team sourceTeam)
-	{
-		_parentTransform = parentTransform;
-		_strength = strength;
-		_sourceTeam = sourceTeam;
-	}
-
-	#region Accessors
-
-	public Transform ParentTransform
-	{
-		get
-		{
-			return _parentTransform;
-		}
-	}
+    public Transform ParentTransform
+    {
+        get
+        {
+            return _parentTransform;
+        }
+    }
 
 
 
-	public int Strength
-	{
-		get
-		{
-			return _strength;
-		}
-	}
+    public int Strength
+    {
+        get
+        {
+            return _strength;
+        }
+    }
 
-	public Team SourceTeam
-	{
-		get
-		{
-			return _sourceTeam;
-		}
-	}	#endregion
+    public Team SourceTeam
+    {
+        get
+        {
+            return _sourceTeam;
+        }
+    }
+
+    #endregion
 }

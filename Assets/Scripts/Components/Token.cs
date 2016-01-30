@@ -8,7 +8,8 @@ public class Token : MonoBehaviour, IPoolable {
 	#endregion
 
 	#region Private Properties
-
+	[SerializeField] private string _tokenTag = "Token";
+	[SerializeField] private string _baseTag = "Base";
 	private int _strength;
 
 	#endregion
@@ -41,7 +42,44 @@ public class Token : MonoBehaviour, IPoolable {
 	
 	}
 
-	private void Defend(int opposingStrength)
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		/*
+			ASSUMPTION:
+			When 2 tokens collide, we can assume that either one or both will be destroyed.
+			We can use this assumption to resolve the collision in just one token (since it will normally be triggered in both)
+		*/
+
+		if (string.Equals(collider.tag.ToLower(), _tokenTag.ToLower()))
+		{
+			Token other = collider.GetComponent<Token>();
+			if (other != null)
+			{
+				int thisStrength = Strength;
+				int otherStrength = other.Strength;
+
+				if (thisStrength >= otherStrength)
+				{
+					//See assumption above
+					other.GetHit(thisStrength);
+					GetHit(otherStrength);
+				}
+			}
+		}
+		else if (string.Equals(collider.tag.ToLower(), _baseTag.ToLower()))
+		{
+			Team t = collider.GetComponent<Team>();
+			if (t != null)
+			{
+				t.Hit(Strength);
+
+				_strength = 0; //Just to be safe
+				PoolManager.Instance.TokenPool.Release(this);
+			}
+		}
+	}
+
+	private void GetHit(int opposingStrength)
 	{
 		_strength -= opposingStrength;
 

@@ -69,6 +69,13 @@ public class Team : MonoBehaviour {
 		if (_players.Contains(playerName) == false)
 		{
 			_players.Add(playerName);
+
+			List<Lane> lanes = LaneManager.Instance.GetTeamLanes(this);
+
+			GameController.Instance.GoToLane(playerName, lanes[Random.Range(0, lanes.Count)].LaneName);
+
+			_players.Sort();
+			//TODO: update UI list of names
 		}
 	}
 
@@ -77,13 +84,14 @@ public class Team : MonoBehaviour {
 		return _players.Contains(playerName);
 	}
 
-	private void Hit(int tokenStrength)
+	public void Hit(int tokenStrength)
 	{
 		_health -= tokenStrength;
 
 		if (_health <= 0)
 		{
-			//TODO: DESTROY BASE!!!;
+			//TODO: DESTROY BASE!!!
+			D.log("BASE DESTROYED!!! - Team: " + _teamName);
 		}
 	}
 

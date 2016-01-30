@@ -41,6 +41,22 @@ public class Lane : MonoBehaviour {
 		}
 	}
 
+	public int Team1Strength
+	{
+		get
+		{
+			return _team1Players.Count;
+		}
+	}
+
+	public int Team2Strength
+	{
+		get
+		{
+			return _team2Players.Count;
+		}
+	}
+
 	#endregion
 
 
@@ -119,8 +135,20 @@ public class Lane : MonoBehaviour {
 		Vector3 t1Pos = _team1.TeamBase.position;
 		Vector3 t2Pos = _team2.TeamBase.position;
 
-		Token team1Token = PoolManager.Instance.TokenPool.Consume(new TokenPoolData(transform, _team1Players.Count));
-		Token team2Token = PoolManager.Instance.TokenPool.Consume(new TokenPoolData(transform, _team2Players.Count));
+		if (Team1Strength > 0)
+		{
+			Token team1Token = PoolManager.Instance.TokenPool.Consume(new TokenPoolData(transform, Team1Strength));
+			team1Token.transform.position = t1Pos;
+
+		}
+
+		if (Team2Strength > 0)
+		{
+			Token team2Token = PoolManager.Instance.TokenPool.Consume(new TokenPoolData(transform, Team2Strength));
+			team2Token.transform.position = t2Pos;
+
+		}
+
 
 	}
 

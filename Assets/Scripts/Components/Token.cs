@@ -104,6 +104,7 @@ public class Token : MonoBehaviour, IPoolable {
 	private void GetHit(int opposingStrength)
 	{
 		_strength -= opposingStrength;
+		_textMesh.text = _strength.ToString();
 
 		if (_strength <= 0)
 		{

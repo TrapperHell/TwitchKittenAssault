@@ -77,4 +77,9 @@ public class TeamManager : MonoSingleton <TeamManager> {
 
 		minT.RegisterPlayer(playerName);
 	}
+
+	public void AddNewPlayer(string playerName, Team t)
+	{
+		t.RegisterPlayer(playerName);
+	}
 }

@@ -132,21 +132,22 @@ public class Lane : MonoBehaviour {
 
 	public void FirePulse()
 	{
+		D.log("Fire pulse");
 		Vector3 t1Pos = _team1.TeamBase.position;
 		Vector3 t2Pos = _team2.TeamBase.position;
 
 		if (Team1Strength > 0)
 		{
-			Token team1Token = PoolManager.Instance.TokenPool.Consume(new TokenPoolData(transform, Team1Strength));
+			Token team1Token = PoolManager.Instance.TokenPool.Consume(new TokenPoolData(transform, Team1Strength, _team1));
 			team1Token.transform.position = t1Pos;
-
+			WaypointControl.TokenMoveManager.Instance.MoveToken(team1Token.gameObject, _team1.Name, _team2.Name);
 		}
 
 		if (Team2Strength > 0)
 		{
-			Token team2Token = PoolManager.Instance.TokenPool.Consume(new TokenPoolData(transform, Team2Strength));
+			Token team2Token = PoolManager.Instance.TokenPool.Consume(new TokenPoolData(transform, Team2Strength, _team2));
 			team2Token.transform.position = t2Pos;
-
+			WaypointControl.TokenMoveManager.Instance.MoveToken(team2Token.gameObject, _team2.Name, _team1.Name);
 		}
 
 

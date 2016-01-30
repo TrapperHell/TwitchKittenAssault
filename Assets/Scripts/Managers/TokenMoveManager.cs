@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace WaypointControl
 {
-	public class TokenMoveManager : MonoSingleton<TokenMoveManager>
+    public class TokenMoveManager : MonoSingleton<TokenMoveManager>
     {
-		[SerializeField] private float moveSpeed = 100.0f;
+        [SerializeField]
+        private float moveSpeed = 100.0f;
 
         static readonly string[] _laneNames = new string[] { "1-2", "2-3", "3-1" };
 

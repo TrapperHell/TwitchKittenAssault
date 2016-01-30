@@ -23,6 +23,23 @@ public class Lane {
 			return _laneName;
 		}
 	}
+
+	public Team Team1
+	{
+		get
+		{
+			return _team1;
+		}
+	}
+
+	public Team Team2
+	{
+		get
+		{
+			return _team2;
+		}
+	}
+
 	#endregion
 
 
@@ -83,6 +100,17 @@ public class Lane {
 				_team2Players.Add(playerName);
 			}
 		}
+	}
+
+	public List<string> GetTeam1Players()
+	{
+		return _team1Players;
+	}
+
+
+	public List<string> GetTeam2Players()
+	{
+		return _team2Players;
 	}
 
 

@@ -18,9 +18,14 @@ public class LaneManager : Singleton <LaneManager> {
 	private List<Lane> _lanes = new List<Lane>();
 	#endregion
 
-	public void AddLane(int laneName, Team t1, Team t2)
+	public void AddLane(Team t1, Team t2)
 	{
-		_lanes.Add(new Lane(laneName, t1, t2));
+		_lanes.Add(new Lane(_lanes.Count, t1, t2));
+	}
+
+	public List<Lane> GetLanes()
+	{
+		return _lanes;
 	}
 
 	public List<Lane> GetTeamLanes(Team t)

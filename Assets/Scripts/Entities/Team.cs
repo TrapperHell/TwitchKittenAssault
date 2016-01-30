@@ -41,6 +41,11 @@ public class Team {
 		_players = new List<string>();
 	}
 
+	public List<string> GetPlayers()
+	{
+		return _players;
+	}
+
 	public void RegisterPlayer(string playerName)
 	{
 		if (_players.Contains(playerName) == false)

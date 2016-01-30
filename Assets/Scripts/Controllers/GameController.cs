@@ -56,7 +56,6 @@ public class GameController : MonoSingleton <GameController> {
 					{
 						l.RemovePlayer(playerName);
 					}
-					break;
 				}
 			}
 		}

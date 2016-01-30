@@ -29,7 +29,7 @@ public class TeamManager : MonoSingleton <TeamManager> {
 			{
 				for (int l = 0; l < _lanesPerTeam; l++)
 				{
-					LaneManager.Instance.AddLane(l, tNew, t);
+					LaneManager.Instance.AddLane(tNew, t);
 				}
 			}
 
@@ -47,6 +47,11 @@ public class TeamManager : MonoSingleton <TeamManager> {
 	
 	}
 
+	public List<Team> GetTeams()
+	{
+		return _teams;
+	}
+
 	public Team GetPlayerTeam(string playerName)
 	{
 		foreach (Team t in _teams)
@@ -62,7 +67,7 @@ public class TeamManager : MonoSingleton <TeamManager> {
 
 	public void AddNewPlayer(string playerName)
 	{
-		int minPlayerQty = -1;
+		int minPlayerQty = int.MaxValue;
 		Team minT = _teams[0];
 
 		foreach (Team t in _teams)

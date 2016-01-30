@@ -16,7 +16,7 @@
 		team2.RegisterLane("sgakgksajgak", this);
 	}
 
-	public RegisterLane(string tempforName, Lane lane)
+	public void RegisterLane(string tempforName, Lane lane)
 	{
 	}
 	#endregion

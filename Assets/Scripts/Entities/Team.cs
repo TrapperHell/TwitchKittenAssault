@@ -5,7 +5,7 @@
 	#endregion
 
 	#region Private Properties
-	private string _teamName
+	private string _teamName;
 	#endregion
 
 	#region Accessors
@@ -28,7 +28,7 @@
 		_teamName = teamName;
 	}
 
-	public RegisterLane(string tempforName, Lane lane)
+	public void RegisterLane(string tempforName, Lane lane)
 	{
 	}
 	#endregion

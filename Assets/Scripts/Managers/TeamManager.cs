@@ -23,7 +23,7 @@ public class TeamManager : MonoSingleton <TeamManager> {
     {
         for (int i = 0; i < _numberOfTeams; i++)
         {
-			_teams.Add(new Team());
+			_teams.Add(new Team("Team " + i));
         }
 
 

@@ -26,3 +26,7 @@ ExportedObj/
 sysinfo.txt
 
 *.rsp
+
+Assets/smcs.rsp.meta
+
+Assets/gmcs.rsp.meta

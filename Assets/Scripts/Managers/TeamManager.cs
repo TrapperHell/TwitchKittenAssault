@@ -13,24 +13,28 @@ public class TeamManager : MonoSingleton <TeamManager> {
 	#endregion
 
 	#region Private Properties
-	[SerializeField] private int _numberOfTeams = 3;
-	[SerializeField] private int _lanesPerTeam = 1;
+	[SerializeField][Range(1, 5)] private int _numberOfTeams = 3;
+	[SerializeField][Range(1, 5)] private int _lanesPerTeam = 1;
 
     private List<Team> _teams = new List<Team>();
 	#endregion
     
-    void Awake()
+	protected override void AwakeEx ()
     {
         for (int i = 0; i < _numberOfTeams; i++)
         {
-			_teams.Add(new Team("Team " + i));
+			Team tNew = new Team("Team " + i);
+
+			foreach (Team t in _teams)
+			{
+				for (int l = 0; l < _lanesPerTeam; l++)
+				{
+					LaneManager.Instance.AddLane(l, tNew, t);
+				}
+			}
+
+			_teams.Add(tNew);
         }
-
-
-		for (int i = 0; i < _lanesPerTeam; i++)
-		{
-			
-		}
     }
     
 	// Use this for initialization
@@ -41,5 +45,36 @@ public class TeamManager : MonoSingleton <TeamManager> {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public Team GetPlayerTeam(string playerName)
+	{
+		foreach (Team t in _teams)
+		{
+			if (t.HasPlayer(playerName))
+			{
+				return t;
+			}
+		}
+
+		return null;
+	}
+
+	public void AddNewPlayer(string playerName)
+	{
+		int minPlayerQty = -1;
+		Team minT = _teams[0];
+
+		foreach (Team t in _teams)
+		{
+			if (t.PlayerCount < minPlayerQty)
+			{
+
+				minPlayerQty = t.PlayerCount;
+				minT = t;
+			}
+		}
+
+		minT.RegisterPlayer(playerName);
 	}
 }

@@ -11,6 +11,7 @@ public class Token : MonoBehaviour, IPoolable {
 	[SerializeField] private string _tokenTag = "Token";
 	[SerializeField] private string _baseTag = "Base";
 	[SerializeField] private SpriteRenderer _spriteRenderer;
+	[SerializeField] private TextMesh _textMesh;
 	private int _strength;
 	private Team _sourceTeam;
 
@@ -89,7 +90,6 @@ public class Token : MonoBehaviour, IPoolable {
 			Team t = collider.GetComponent<Team>();
 			if (t != null)
 			{
-				D.log("Base HIT!!!");
 				if (t != _sourceTeam)
 				{
 					t.Hit(Strength);
@@ -138,6 +138,7 @@ public class Token : MonoBehaviour, IPoolable {
 		TokenPoolData data = (TokenPoolData)_data;
 
 		_strength = data.Strength;
+		_textMesh.text = data.Strength.ToString();
 		_sourceTeam = data.SourceTeam;
 		_spriteRenderer.color = data.SourceTeam.TeamColour;
 		gameObject.SetActive(true);

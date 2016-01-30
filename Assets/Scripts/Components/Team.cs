@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent (typeof (Transform))]
 public class Team : MonoBehaviour {
@@ -11,6 +12,7 @@ public class Team : MonoBehaviour {
 	#region Private Properties
 	[SerializeField] private string _teamName;
 	[SerializeField] private Color _teamColour;
+	[SerializeField] private Image _healthBar;
 
 	private List<string> _players;
 	private Transform _transform;
@@ -96,6 +98,8 @@ public class Team : MonoBehaviour {
 	public void Hit(int tokenStrength)
 	{
 		_health -= tokenStrength;
+
+		_healthBar.rectTransform.sizeDelta = new Vector2(_health, _healthBar.rectTransform.sizeDelta.y);
 
 		if (_health <= 0)
 		{

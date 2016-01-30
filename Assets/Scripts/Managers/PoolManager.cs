@@ -44,7 +44,7 @@ public class PoolManager : MonoSingleton<PoolManager>
     protected override void AwakeEx()
     {
         _tokenPool = new ObjectPool<Token>(_tokenPrefab, _tokenPoolParent);
-        _tokenPool.ResizePool(GameLogicController.Instance.TEMPtokenpoolsize);
+        _tokenPool.ResizePool(GameLogicController.Instance.tokenInitialPoolSize);
     }
 
     void Update()

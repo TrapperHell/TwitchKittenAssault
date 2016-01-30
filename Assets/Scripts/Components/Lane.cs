@@ -132,7 +132,6 @@ public class Lane : MonoBehaviour {
 
 	public void FirePulse()
 	{
-		D.log("Fire pulse");
 		Vector3 t1Pos = _team1.TeamBase.position;
 		Vector3 t2Pos = _team2.TeamBase.position;
 

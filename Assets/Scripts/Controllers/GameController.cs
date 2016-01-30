@@ -71,7 +71,7 @@ public class GameController : MonoSingleton <GameController> {
 	private void FirePulse()
 	{
 		List<Lane> lanes = LaneManager.Instance.GetLanes();
-		D.log("Start firing");
+
 		foreach (Lane l in lanes)
 		{
 			l.FirePulse();

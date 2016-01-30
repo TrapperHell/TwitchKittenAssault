@@ -10,11 +10,10 @@ public class GameLogicController : MonoSingleton <GameLogicController> {
 	
 	
 	#region Public Properties
-	public int TEMPtokenpoolsize = 10;
+	public int tokenInitialPoolSize = 10;
 	#endregion
 
 	#region Private Properties
-	[SerializeField] private string _gameVersion = "0.1";
 
 	#endregion
 

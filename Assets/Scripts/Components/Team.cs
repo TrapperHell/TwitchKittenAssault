@@ -13,6 +13,7 @@ public class Team : MonoBehaviour {
 
 	private List<string> _players;
 	private RectTransform _rectTransform;
+	private int _health;
 	#endregion
 
 	#region Accessors
@@ -50,6 +51,7 @@ public class Team : MonoBehaviour {
 	{
 		_rectTransform = GetComponent<RectTransform>();
 		_players = new List<string>();
+		_health = TeamManager.Instance.StartingHealth;
 	}
 
 	void Start()
@@ -75,6 +77,15 @@ public class Team : MonoBehaviour {
 		return _players.Contains(playerName);
 	}
 
+	private void Hit(int tokenStrength)
+	{
+		_health -= tokenStrength;
+
+		if (_health <= 0)
+		{
+			//TODO: DESTROY BASE!!!;
+		}
+	}
 
 	#endregion
 

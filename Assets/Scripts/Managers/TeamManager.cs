@@ -14,6 +14,17 @@ public class TeamManager : MonoSingleton <TeamManager> {
 
 	#region Private Properties
     [SerializeField] private List<Team> _teams = new List<Team>();
+	[SerializeField] private int _startingHealth = 100;
+	#endregion
+
+	#region Accessors
+	public int StartingHealth
+	{
+		get
+		{
+			return _startingHealth;
+		}
+	}
 	#endregion
     
 	protected override void AwakeEx ()

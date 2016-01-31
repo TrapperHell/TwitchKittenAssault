@@ -498,6 +498,22 @@ Prefab:
       propertyPath: _healthBar
       value: 
       objectReference: {fileID: 777729170}
+    - target: {fileID: 11438206, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
+      propertyPath: _hitColor.r
+      value: 0.9264706
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438206, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
+      propertyPath: _hitColor.g
+      value: 0.26567903
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438206, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
+      propertyPath: _hitColor.b
+      value: 0.26567903
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438206, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
+      propertyPath: _hitColor.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
   m_IsPrefabParent: 0
@@ -613,6 +629,22 @@ Prefab:
     - target: {fileID: 11438206, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
       propertyPath: _teamColour.b
       value: 0.098961934
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438206, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
+      propertyPath: _hitColor.r
+      value: 0.9254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438206, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
+      propertyPath: _hitColor.g
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438206, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
+      propertyPath: _hitColor.b
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438206, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
+      propertyPath: _hitColor.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
@@ -867,7 +899,7 @@ MonoBehaviour:
   _voteTimeInS: 5
   _voteIntervalMinInS: 45
   _voteIntervalMaxInS: 60
-  _emoticon: {fileID: 0}
+  _emoticon: {fileID: 1891123957}
 --- !u!114 &638893889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1639,6 +1671,22 @@ Prefab:
       propertyPath: _teamColour.g
       value: 0.098961934
       objectReference: {fileID: 0}
+    - target: {fileID: 11438206, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
+      propertyPath: _hitColor.r
+      value: 0.9254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438206, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
+      propertyPath: _hitColor.g
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438206, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
+      propertyPath: _hitColor.b
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438206, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
+      propertyPath: _hitColor.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16ef75461c2c7427da77fb439e92f7b9, type: 2}
   m_IsPrefabParent: 0
@@ -2074,7 +2122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1891123955
 Transform:
   m_ObjectHideFlags: 0

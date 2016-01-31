@@ -56,16 +56,37 @@ namespace Assets.Scripts.Managers
                 string message = msgMatch.Groups[2].Value;
 
                 ICommand command = ParseMessage(message);
-                if (command != null)
-                {
-                    Debug.Log(String.Format("{0} says '{1}' => {2}", userName, message, command.GetType().Name));
+				if (command != null)
+				{
+					Debug.Log(String.Format("{0} says '{1}' => {2}", userName, message, command.GetType().Name));
 
-                    command.UserName = userName;
+					command.UserName = userName;
 
-                    CommandRouter.RouteCommand(command);
-                }
-                else
-                    Debug.Log(String.Format("{0} says '{1}' => ?", userName, message));
+					CommandRouter.RouteCommand(command);
+				}
+				else
+				{
+					int count = 0;
+					int lastIndex = 0;
+
+					string[] words = message.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries);
+					foreach(string w in words)
+					{
+						if (w.Trim().Equals(GameController.Instance.CurrentEmoticon))
+						{
+							count++;
+						}
+					}
+
+					if (count > 0)
+					{
+						Debug.Log(String.Format("{0} votes {1} " + count + " times", userName, message));
+					}
+					else
+					{
+						Debug.Log(String.Format("{0} says '{1}' => ?", userName, message));
+					}
+				}
             }
         }
 

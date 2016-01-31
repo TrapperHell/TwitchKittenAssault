@@ -34,6 +34,14 @@ public class GameController : MonoSingleton<GameController>
 		}
 	}
 
+	public string CurrentEmoticon
+	{
+		get
+		{
+			return _emoticon.CurrentEmoticon();
+		}
+	}
+
     protected override void AwakeEx()
     {
         _lastPulseTime = 0;
@@ -124,4 +132,25 @@ public class GameController : MonoSingleton<GameController>
 		_emoticon.NewEmoticon();
 		_emoticon.gameObject.SetActive(true);
     }
+
+	public void EndVote()
+	{
+		int maxVote = -1;
+		Team tMax = TeamManager.Instance.GetTeams()[0];
+		foreach (Team t in TeamManager.Instance.GetTeams())
+		{
+			if (t.Votes > maxVote)
+			{
+				tMax = t;
+			}
+		}
+
+		if (Random.Range(0, 2) == 0)
+		{
+			
+		}
+		else
+		{
+		}
+	}
 }

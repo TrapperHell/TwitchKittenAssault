@@ -98,6 +98,11 @@ public class Team : MonoBehaviour {
 		return _players;
 	}
 
+	public string GetRandomPlayer()
+	{
+		return _players[Random.Range(0, _players.Count)];
+	}
+
 	public void RegisterPlayer(string playerName)
 	{
 		if (_players.Contains(playerName) == false)

@@ -1,18 +1,26 @@
 ﻿using UnityEngine;
+<<<<<<< HEAD
 using System.Collections;
 using System.Collections.Generic;
+=======
+>>>>>>> origin/master
 
-public class Token : MonoBehaviour, IPoolable {
+public class Token : MonoBehaviour, IPoolable
+{
 
 	#region Public Properties
 
 	#endregion
 
 	#region Private Properties
-	[SerializeField] private string _tokenTag = "Token";
-	[SerializeField] private string _baseTag = "Base";
-	[SerializeField] private SpriteRenderer _spriteRenderer;
-	[SerializeField] private TextMesh _textMesh;
+    [SerializeField]
+    private string _tokenTag = "Token";
+    [SerializeField]
+    private string _baseTag = "Base";
+    [SerializeField]
+    private SpriteRenderer _spriteRenderer;
+    [SerializeField]
+    private TextMesh _textMesh;
 	private int _strength;
 	private Team _sourceTeam;
 
@@ -49,12 +57,14 @@ public class Token : MonoBehaviour, IPoolable {
 	#region Methods
 
 	// Use this for initialization
-	void Start () {
+    void Start()
+    {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+    void Update()
+    {
 	
 	}
 

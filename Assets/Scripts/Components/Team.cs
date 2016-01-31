@@ -111,6 +111,7 @@ public class Team : MonoBehaviour {
 			_players.Sort();
 			//TODO: update UI list of names
 
+
 			SoundManager.Instance.PlayNewPlayer();
 		}
 	}

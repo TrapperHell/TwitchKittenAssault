@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 461226}
   - 212: {fileID: 21286144}
-  - 114: {fileID: 11449074}
   m_Layer: 0
   m_Name: Castle
   m_TagString: Untagged
@@ -146,20 +145,6 @@ MonoBehaviour:
   _teamColour: {r: 0, g: 0, b: 0, a: 0}
   _healthBar: {fileID: 0}
   _castle: {fileID: 178766}
---- !u!114 &11449074
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178766}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b9f325ec87ba404cb650165e8117c1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 5
-  magnitude: 0.2
-  test: 0
 --- !u!212 &21212202
 SpriteRenderer:
   m_ObjectHideFlags: 1

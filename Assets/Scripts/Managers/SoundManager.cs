@@ -15,8 +15,8 @@ public class SoundManager : MonoSingleton <SoundManager> {
 
 	#region Private Properties
 	[SerializeField] private List<AudioClip> _genericMeows;
-	[SerializeField] private AudioClip _newPlayerMeow;
-	[SerializeField] private AudioClip _baseDieMeow;
+	[SerializeField] private List<AudioClip> _angryMeows;
+	[SerializeField] private List<AudioClip> _sadMeows;
 
 	private AudioSource _audioSource;
 	#endregion
@@ -42,16 +42,16 @@ public class SoundManager : MonoSingleton <SoundManager> {
 
 	public void PlayNewPlayer()
 	{
-		_audioSource.PlayOneShot(_newPlayerMeow);
+		_audioSource.PlayOneShot(_genericMeows[Random.Range(0, _genericMeows.Count)]);
 	}
 
 	public void PlayBaseDie()
 	{
-		_audioSource.PlayOneShot(_baseDieMeow);
+		_audioSource.PlayOneShot(_sadMeows[Random.Range(0, _sadMeows.Count)]);
 	}
 
-	public void PlayRandomGenericMeow()
+	public void PlayTokenHit()
 	{
-		_audioSource.PlayOneShot(_genericMeows[Random.Range(0, _genericMeows.Count)]);
+		_audioSource.PlayOneShot(_angryMeows[Random.Range(0, _angryMeows.Count)]);
 	}
 }

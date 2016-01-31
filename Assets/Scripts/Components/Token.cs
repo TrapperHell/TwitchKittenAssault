@@ -11,14 +11,10 @@ public class Token : MonoBehaviour, IPoolable
 	#endregion
 
 	#region Private Properties
-    [SerializeField]
-    private string _tokenTag = "Token";
-    [SerializeField]
-    private string _baseTag = "Base";
-    [SerializeField]
-    private SpriteRenderer _spriteRenderer;
-    [SerializeField]
-    private TextMesh _textMesh;
+    [SerializeField] private string _tokenTag = "Token";
+	[SerializeField] private string _baseTag = "Base";
+	[SerializeField] private SpriteRenderer _spriteRenderer;
+	[SerializeField] private TextMesh _textMesh;
 	private int _strength;
 	private Team _sourceTeam;
 
@@ -89,7 +85,7 @@ public class Token : MonoBehaviour, IPoolable
 						//See assumption above
 						other.GetHit(thisStrength);
 						GetHit(otherStrength);
-						SoundManager.Instance.PlayRandomGenericMeow();
+						SoundManager.Instance.PlayTokenHit();
 					}
 				}
 			}
@@ -127,7 +123,7 @@ public class Token : MonoBehaviour, IPoolable
 					}
 					else
 					{
-						SoundManager.Instance.PlayRandomGenericMeow();
+						SoundManager.Instance.PlayTokenHit();
 
 						t.Hit(Strength);
 

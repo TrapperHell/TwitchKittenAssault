@@ -47,7 +47,7 @@ public class GameController : MonoSingleton <GameController> {
 		{
 			StartVote();
 			_lastVoteTime = Time.time;
-			_nextVoteTime = Time.time + Random.RandomRange(_voteIntervalMinInS, _voteIntervalMaxInS);
+			_nextVoteTime = Time.time + Random.Range(_voteIntervalMinInS, _voteIntervalMaxInS);
 		}
 	}
 

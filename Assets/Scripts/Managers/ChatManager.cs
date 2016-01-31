@@ -67,7 +67,6 @@ namespace Assets.Scripts.Managers
 				else
 				{
 					int count = 0;
-					int lastIndex = 0;
 
 					string[] words = message.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries);
 					foreach(string w in words)

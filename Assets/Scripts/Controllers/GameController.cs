@@ -21,6 +21,7 @@ public class GameController : MonoSingleton<GameController>
     [SerializeField]
     private float _voteIntervalMaxInS = 60;
 	[SerializeField] private Emoticon _emoticon;
+	[SerializeField] private int _voteHealAmount = 100;
 
     private float _lastPulseTime;
     private float _lastVoteTime;
@@ -147,10 +148,11 @@ public class GameController : MonoSingleton<GameController>
 
 		if (Random.Range(0, 2) == 0)
 		{
-			
+			tMax.KillOtherTokens();
 		}
 		else
 		{
+			tMax.Heal(_voteHealAmount);
 		}
 	}
 }

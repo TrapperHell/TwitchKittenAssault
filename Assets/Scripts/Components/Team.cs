@@ -15,6 +15,7 @@ public class Team : MonoBehaviour {
 	[SerializeField] private Image _healthBar;
 	[SerializeField] private GameObject _castle;
     [SerializeField] private Color _hitColor;
+    [SerializeField] private Color _healColor;
 
     private List<string> _players;
 	private Transform _transform;
@@ -135,6 +136,20 @@ public class Team : MonoBehaviour {
         }
 	}
 
+    public void Heal(int healStrength)
+    {
+        _health += healStrength;
+
+        // If Health exceedeed Starting Health (Max), then set to that value
+        if (_health > TeamManager.Instance.StartingHealth)
+        {
+            _health = TeamManager.Instance.StartingHealth;
+        }
+
+        _healthBar.rectTransform.sizeDelta = new Vector2(_health, _healthBar.rectTransform.sizeDelta.y);
+
+    }
+
 	public void ClearVotes()
 	{
 		_votes = 0;
@@ -145,7 +160,33 @@ public class Team : MonoBehaviour {
 		_votes++;
 	}
 
-    System.Collections.IEnumerator FlashHit()
+    System.Collections.IEnumerator FlashHeal()
+    {
+        SpriteRenderer castleSprite = _castle.GetComponent<SpriteRenderer>();
+        Color originalColor = castleSprite.color;
+
+        while (true)
+        {
+            if (originalColor == _healColor)
+            {
+                break;
+            }
+            castleSprite.color = Color.Lerp(originalColor, _healColor, .2f);
+            yield return new WaitForEndOfFrame();
+        }
+
+        while (true)
+        {
+            if (originalColor == castleSprite.color)
+            {
+                break;
+            }
+            castleSprite.color = Color.Lerp(_healColor, originalColor, .5f);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+        System.Collections.IEnumerator FlashHit()
     {
         SpriteRenderer castleSprite = _castle.GetComponent<SpriteRenderer>();
         castleSprite.color = _hitColor;

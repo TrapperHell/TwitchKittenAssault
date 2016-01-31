@@ -14,7 +14,7 @@ public class TeamManager : MonoSingleton <TeamManager> {
 
 	#region Private Properties
     [SerializeField] private List<Team> _teams = new List<Team>();
-	[SerializeField] private int _startingHealth = 100;
+	[SerializeField] private int _startingHealth = 1000;
 	#endregion
 
 	#region Accessors
@@ -94,5 +94,4 @@ public class TeamManager : MonoSingleton <TeamManager> {
 			}
 		}
 	}
-		
 }

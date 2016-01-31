@@ -20,6 +20,8 @@ public class SoundManager : MonoSingleton<SoundManager>
     private List<AudioClip> _angryMeows;
     [SerializeField]
     private List<AudioClip> _sadMeows;
+    [SerializeField]
+    private List<AudioClip> _healMeow;
 
     private AudioSource _audioSource;
     #endregion
@@ -49,5 +51,11 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         if (_angryMeows.Any())
             _audioSource.PlayOneShot(_angryMeows[Random.Range(0, _angryMeows.Count)]);
+    }
+
+    public void PlayBaseHeal()
+    {
+        if (_healMeow.Any())
+            _audioSource.PlayOneShot(_healMeow[Random.Range(0, _healMeow.Count)]);
     }
 }

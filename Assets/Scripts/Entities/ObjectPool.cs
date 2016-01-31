@@ -22,6 +22,14 @@ public class ObjectPool<T> where T : MonoBehaviour, IPoolable//, new()
 			return _pool.Count;
 		}
 	}
+
+    public List<T> InUse
+    {
+        get
+        {
+            return _inUse;
+        }
+    }
 	#endregion
 
 	#region Methods

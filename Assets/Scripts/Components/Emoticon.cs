@@ -88,6 +88,7 @@ public class Emoticon : MonoBehaviour
         }
 
         transform.position = originalPos;
+        GameController.Instance.EndVote();
         gameObject.SetActive(false);
     }
 }

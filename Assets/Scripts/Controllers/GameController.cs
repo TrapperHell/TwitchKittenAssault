@@ -21,6 +21,7 @@ public class GameController : MonoSingleton<GameController>
     [SerializeField]
     private float _voteIntervalMaxInS = 60;
 	[SerializeField] private Emoticon _emoticon;
+	[SerializeField] private int _voteHealAmount = 100;
 
     private float _lastPulseTime;
     private float _lastVoteTime;
@@ -31,6 +32,14 @@ public class GameController : MonoSingleton<GameController>
 	{		get
 		{
 			return _voteTimeInS;
+		}
+	}
+
+	public string CurrentEmoticon
+	{
+		get
+		{
+			return _emoticon.CurrentEmoticon();
 		}
 	}
 
@@ -123,6 +132,27 @@ public class GameController : MonoSingleton<GameController>
 
 		_emoticon.NewEmoticon();
 		_emoticon.gameObject.SetActive(true);
-
     }
+
+	public void EndVote()
+	{
+		int maxVote = -1;
+		Team tMax = TeamManager.Instance.GetTeams()[0];
+		foreach (Team t in TeamManager.Instance.GetTeams())
+		{
+			if (t.Votes > maxVote)
+			{
+				tMax = t;
+			}
+		}
+
+		if (Random.Range(0, 2) == 0)
+		{
+			tMax.KillOtherTokens();
+		}
+		else
+		{
+			tMax.Heal(_voteHealAmount);
+		}
+	}
 }

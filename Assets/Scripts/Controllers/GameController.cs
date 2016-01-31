@@ -164,6 +164,7 @@ public class GameController : MonoSingleton<GameController>
 			if ((t.Votes > 0) && (t.Votes > maxVote))
 			{
 				tMax = t;
+				maxVote = t.Votes;
 			}
 		}
 

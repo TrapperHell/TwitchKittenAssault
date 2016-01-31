@@ -964,11 +964,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _genericMeows:
-  - {fileID: 8300000, guid: f2a66d5ffaf4142a98c50d173308c6f8, type: 3}
-  - {fileID: 8300000, guid: 6ed8b1e0c3e10414c86e5521cc474fa1, type: 3}
+  - {fileID: 8300000, guid: ec9bd6e8f05704edea5cdefef3317744, type: 3}
+  - {fileID: 8300000, guid: 1a51350e86ce84184b3ac8c5303ac4fc, type: 3}
+  - {fileID: 8300000, guid: 635082f9e2912457d91952bdc0c35daa, type: 3}
+  - {fileID: 8300000, guid: 3eb54a4c7e406441bb7fb36093e70fc5, type: 3}
+  _angryMeows:
+  - {fileID: 8300000, guid: 2187961c4228842698a2da1c139dd138, type: 3}
+  - {fileID: 8300000, guid: 2b0ebecd8842d4929b9141db1b1278b8, type: 3}
+  - {fileID: 8300000, guid: 7f2c4b066cb5a41f28ec84479a9f6044, type: 3}
+  - {fileID: 8300000, guid: f935e6fc357494de0831c86b29c912d1, type: 3}
+  - {fileID: 8300000, guid: b335c86e81b9745d18a1f6c9f2b177db, type: 3}
+  - {fileID: 8300000, guid: c8c779640af9f4a55bf45a745ffbca45, type: 3}
   - {fileID: 8300000, guid: 7e9b0cd13d855407dadab51453f80f62, type: 3}
-  _newPlayerMeow: {fileID: 8300000, guid: f2a66d5ffaf4142a98c50d173308c6f8, type: 3}
-  _baseDieMeow: {fileID: 8300000, guid: 6ed8b1e0c3e10414c86e5521cc474fa1, type: 3}
+  _sadMeows:
+  - {fileID: 8300000, guid: a323955dfb88c4198bf51aa14e8a9244, type: 3}
+  - {fileID: 8300000, guid: 1d362605f8e1e4f2e91ae398642487d6, type: 3}
+  - {fileID: 8300000, guid: b8c5eaaf313e94012b91a773223c653e, type: 3}
 --- !u!1 &724650889
 GameObject:
   m_ObjectHideFlags: 0

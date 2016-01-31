@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 public class TokenPoolData : IPoolData
 {
     #region Private Properties
@@ -25,6 +26,8 @@ public class TokenPoolData : IPoolData
             return _parentTransform;
         }
     }
+
+
 
     public int Strength
     {

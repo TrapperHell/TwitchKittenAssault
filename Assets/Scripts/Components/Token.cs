@@ -11,12 +11,14 @@ public class Token : MonoBehaviour, IPoolable
     [SerializeField]
     private string _baseTag = "Base";
     [SerializeField]
-    private SpriteRenderer _spriteRenderer;
+    private SpriteRenderer _tokenImage;
     [SerializeField]
     private TextMesh _textMesh;
     private int _strength;
     private Team _sourceTeam;
-    private Vector3 _originalScale;
+	private Vector3 _originalScale;
+	[SerializeField] float _scaleMax = 3;
+	[SerializeField] float _scaleMaxAtStrength = 75;
 
     #endregion
 
@@ -54,12 +56,17 @@ public class Token : MonoBehaviour, IPoolable
     {
         if (this.Strength > 1)
         {
-            float scaleAdd = this.Strength / 20f;
-            scaleAdd = Math.Min(1, scaleAdd);
-            transform.localScale = new Vector3(this._originalScale.x + scaleAdd, this._originalScale.y + scaleAdd, this._originalScale.z);
+			float cappedStrength = Mathf.Min(Strength, _scaleMaxAtStrength);
+
+            //float scaleAdd = this.Strength / 20f;
+			float scaleAdd = (cappedStrength / _scaleMaxAtStrength) * _scaleMax;
+
+           //scaleAdd = Math.Min(1, scaleAdd);
+            
+			_tokenImage.transform.localScale = new Vector3(this._originalScale.x + scaleAdd, this._originalScale.y + scaleAdd, this._originalScale.z);
         }
         else
-            transform.localScale = this._originalScale;
+			_tokenImage.transform.localScale = this._originalScale;
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -158,7 +165,7 @@ public class Token : MonoBehaviour, IPoolable
 
         _textMesh.text = data.Strength.ToString();
         _sourceTeam = data.SourceTeam;
-        _spriteRenderer.color = data.SourceTeam.TeamColour;
+		_tokenImage.color = data.SourceTeam.TeamColour;
         gameObject.SetActive(true);
         transform.SetParent(data.ParentTransform, false);
     }

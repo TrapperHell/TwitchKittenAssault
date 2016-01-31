@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
-<<<<<<< HEAD
+
 using System.Collections;
 using System.Collections.Generic;
-=======
->>>>>>> origin/master
 
 public class Token : MonoBehaviour, IPoolable
 {

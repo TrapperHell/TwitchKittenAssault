@@ -26,7 +26,7 @@ public class GameController : MonoSingleton <GameController> {
 	protected override void AwakeEx () {
 		_lastPulseTime = 0;
 		_lastVoteTime = 0;
-		_nextVoteTime = Random.RandomRange(_voteIntervalMinInS, _voteIntervalMaxInS);
+		_nextVoteTime = Random.Range(_voteIntervalMinInS, _voteIntervalMaxInS);
 	}
 
 	// Use this for initialization

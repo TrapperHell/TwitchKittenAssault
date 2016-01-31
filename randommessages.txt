@@ -1,6 +1,0 @@
-Reg Ex for finding User:
-@(.*).tmi.twitch.tv
-
-String from IRC:
-:kamadake!kamadake@kamadake.tmi.twitch.tv PRIVMSG #kamadake :sdfsadf
-:kamadake!kamadake@kamadake.tmi.twitch.tv PRIVMSG #kamadake :Kreygasm Kreygasm Kreygasm Kreygasm Kreygasm Kreygasm Kreygasm

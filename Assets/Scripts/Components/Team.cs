@@ -125,7 +125,7 @@ public class Team : MonoBehaviour {
 	{
 		_health -= tokenStrength;
 
-		_healthBar.rectTransform.sizeDelta = new Vector2(_health, _healthBar.rectTransform.sizeDelta.y);
+		UpdateHealthBar();
 
 		if (_health <= 0)
 		{
@@ -152,9 +152,14 @@ public class Team : MonoBehaviour {
                 _health = TeamManager.Instance.StartingHealth;
             }
 
-            _healthBar.rectTransform.sizeDelta = new Vector2(_health, _healthBar.rectTransform.sizeDelta.y);
+			UpdateHealthBar();
         }
     }
+
+	public void UpdateHealthBar()
+	{
+		_healthBar.rectTransform.sizeDelta = new Vector2((_health/ TeamManager.Instance.StartingHealth) * 100.0f, _healthBar.rectTransform.sizeDelta.y);
+	}
 
     public void KillOtherTokens()
     {

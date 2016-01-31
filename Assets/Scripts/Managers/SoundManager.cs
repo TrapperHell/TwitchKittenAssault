@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
+
 public class SoundManager : MonoSingleton<SoundManager>
 {
     #region Constants
@@ -24,7 +24,8 @@ public class SoundManager : MonoSingleton<SoundManager>
     private List<AudioClip> _healMeow;
 	[SerializeField] AudioClip _emoticonYell;
 
-    private AudioSource _audioSource;
+	public AudioSource _audioSource;
+	public AudioSource _audioSource2;
     #endregion
 
     #region Accessors
@@ -33,7 +34,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     protected override void AwakeEx()
     {
-        _audioSource = GetComponent<AudioSource>();
+       // _audioSource = GetComponent<AudioSource>();
     }
 
     public void PlayNewPlayer()
@@ -64,6 +65,6 @@ public class SoundManager : MonoSingleton<SoundManager>
 	public void PlayEmoticonYell()
 	{
 		if (_emoticonYell != null)
-			_audioSource.PlayOneShot(_emoticonYell);
+			_audioSource2.Play();
 	}
 }

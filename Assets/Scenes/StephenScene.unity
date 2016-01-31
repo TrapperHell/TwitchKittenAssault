@@ -285,11 +285,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22469750, guid: 606cfb7198954f848b6030e3027b2a7e, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 22469750, guid: 606cfb7198954f848b6030e3027b2a7e, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 22469750, guid: 606cfb7198954f848b6030e3027b2a7e, type: 2}
       propertyPath: m_LocalScale.z
@@ -947,11 +947,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22469750, guid: 606cfb7198954f848b6030e3027b2a7e, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 22469750, guid: 606cfb7198954f848b6030e3027b2a7e, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 22469750, guid: 606cfb7198954f848b6030e3027b2a7e, type: 2}
       propertyPath: m_LocalScale.z
@@ -1202,6 +1202,7 @@ GameObject:
   - 114: {fileID: 638893894}
   - 114: {fileID: 638893896}
   - 82: {fileID: 638893895}
+  - 82: {fileID: 638893897}
   m_Layer: 0
   m_Name: GameLogicController
   m_TagString: Untagged
@@ -1335,12 +1336,12 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.76
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
-  Priority: 128
+  Priority: 183
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1429,6 +1430,82 @@ MonoBehaviour:
   _healMeow:
   - {fileID: 8300000, guid: be59af0602f5f49789fda20d21b594b0, type: 3}
   _emoticonYell: {fileID: 8300000, guid: 644ccbe1357f248c18da1373d6d6f046, type: 3}
+  _audioSource: {fileID: 638893895}
+  _audioSource2: {fileID: 638893897}
+--- !u!82 &638893897
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 638893886}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 644ccbe1357f248c18da1373d6d6f046, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 0
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &692074913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,11 +2633,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22469750, guid: 606cfb7198954f848b6030e3027b2a7e, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 22469750, guid: 606cfb7198954f848b6030e3027b2a7e, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 606cfb7198954f848b6030e3027b2a7e, type: 2}

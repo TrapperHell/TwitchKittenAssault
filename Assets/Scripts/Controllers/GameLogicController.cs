@@ -139,6 +139,19 @@ public class GameLogicController : MonoSingleton<GameLogicController>
         }
 
 
+		if (Input.GetKeyDown(KeyCode.Alpha5))
+		{
+			TeamManager.Instance.GetTeams()[0].Vote();
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha6))
+		{
+			TeamManager.Instance.GetTeams()[1].Vote();
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha7))
+		{
+			TeamManager.Instance.GetTeams()[2].Vote();
+		}
+
     }
 
     void OnApplicationQuit()

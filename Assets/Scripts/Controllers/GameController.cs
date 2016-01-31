@@ -72,6 +72,7 @@ public class GameController : MonoSingleton<GameController>
 		if ((Time.time >= _nextVoteTime - 3) && (Time.time < _nextVoteTime - 2))
 		{
 			num3.gameObject.SetActive(true);
+			SoundManager.Instance.PlayEmoticonYell();
 		}
 		else if ((Time.time >= _nextVoteTime - 2) && (Time.time < _nextVoteTime - 1))
 		{
@@ -151,7 +152,7 @@ public class GameController : MonoSingleton<GameController>
 
 		_emoticon.NewEmoticon();
 		_emoticon.gameObject.SetActive(true);
-		SoundManager.Instance.PlayEmoticonYell();
+
     }
 
 	public void EndVote()
@@ -166,13 +167,16 @@ public class GameController : MonoSingleton<GameController>
 			}
 		}
 
-		if (Random.Range(0, 2) == 0)
+		if (maxVote > 0)
 		{
-			tMax.KillOtherTokens();
-		}
-		else
-		{
-			tMax.Heal(_voteHealAmount);
+			if (Random.Range(0, 2) == 0)
+			{
+				tMax.KillOtherTokens();
+			}
+			else
+			{
+				tMax.Heal(_voteHealAmount);
+			}
 		}
 	}
 }

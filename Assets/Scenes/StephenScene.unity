@@ -797,8 +797,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pulseIntervalInS: 3
   _voteTimeInS: 5
-  _voteIntervalMinInS: 45
-  _voteIntervalMaxInS: 60
+  _voteIntervalMinInS: 5
+  _voteIntervalMaxInS: 5
+  _emoticon: {fileID: 990250248}
 --- !u!114 &638893889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,6 +1177,95 @@ Transform:
   - {fileID: 1957093417}
   m_Father: {fileID: 1604303890}
   m_RootOrder: 2
+--- !u!1 &990250245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 990250247}
+  - 212: {fileID: 990250246}
+  - 114: {fileID: 990250248}
+  m_Layer: 0
+  m_Name: Emoticon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!212 &990250246
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 990250245}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: ab89807d49c662f4cb3996da57160ef4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+--- !u!4 &990250247
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 990250245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.28, y: -0.39, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_Children: []
+  m_Father: {fileID: 1604303890}
+  m_RootOrder: 3
+--- !u!114 &990250248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 990250245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627ca93516e2941beab2efdf483aeb72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _magnitude: 0.05
+  _dampAfterDuration: 5
+  _emoticons:
+  - {fileID: 21300000, guid: 678d12790bb450242ac2b0ad8154cbff, type: 3}
+  - {fileID: 21300000, guid: ab89807d49c662f4cb3996da57160ef4, type: 3}
+  - {fileID: 21300000, guid: bc97fa4b859d4034783e4526822815eb, type: 3}
+  - {fileID: 21300000, guid: 5c950e29122ed1443b97b1a529f5fa44, type: 3}
+  - {fileID: 21300000, guid: c0a3bf5aa3b5dc74cb1b43488516c42a, type: 3}
+  - {fileID: 21300000, guid: f3fbefef34469f842b792c30c08fd845, type: 3}
+  - {fileID: 21300000, guid: 58ed2cb4db468014699bea889c40abe5, type: 3}
+  _emoticonNames:
+  - Failfish
+  - FrankerZ
+  - Heyuys
+  - Kreygasm
+  - PogChamp
+  - ResidentSleeper
+  - SwiftRage
+  _spriteRenderer: {fileID: 990250246}
 --- !u!1 &1292184003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,6 +1542,7 @@ Transform:
   - {fileID: 1565112751}
   - {fileID: 1292184004}
   - {fileID: 920970768}
+  - {fileID: 990250247}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!1001 &1618936643

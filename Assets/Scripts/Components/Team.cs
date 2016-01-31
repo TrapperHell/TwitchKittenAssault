@@ -2,143 +2,149 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent (typeof (Transform))]
-public class Team : MonoBehaviour {
+[RequireComponent(typeof(Transform))]
+public class Team : MonoBehaviour
+{
+    #region Public Properties
 
-	#region Public Properties
+    public Text PlayerNamesText;
 
-	#endregion
+    #endregion
 
-	#region Private Properties
-	[SerializeField] private string _teamName;
-	[SerializeField] private Color _teamColour;
-	[SerializeField] private Image _healthBar;
-	[SerializeField] private GameObject _castle;
+    #region Private Properties
 
-	private List<string> _players;
-	private Transform _transform;
-	private int _health;
+    [SerializeField]
+    private string _teamName;
+    [SerializeField]
+    private Color _teamColour;
+    [SerializeField]
+    private Image _healthBar;
+    [SerializeField]
+    private GameObject _castle;
 
-	private int _votes;
-	#endregion
+    private List<string> _players;
+    private Transform _transform;
+    private int _health;
 
-	#region Accessors
-	public string Name
-	{
-		get
-		{
-			return _teamName;
-		}
-		set
-		{
-			_teamName = value;
-		}
-	}
+    private int _votes;
 
-	public int PlayerCount
-	{
-		get
-		{
-			return _players.Count;
-		}
-	}
+    #endregion
 
-	public Transform TeamBase
-	{
-		get
-		{
-			return _transform;
-		}
-	}
+    #region Accessors
+    public string Name
+    {
+        get
+        {
+            return _teamName;
+        }
+        set
+        {
+            _teamName = value;
+        }
+    }
 
-	public Color TeamColour
-	{
-		get
-		{
-			return _teamColour;
-		}
-	}
+    public int PlayerCount
+    {
+        get
+        {
+            return _players.Count;
+        }
+    }
 
-	public int Health
-	{
-		get
-		{
-			return _health;
-		}
-	}
+    public Transform TeamBase
+    {
+        get
+        {
+            return _transform;
+        }
+    }
 
-	public int Votes
-	{
-		get
-		{
-			return _votes;
-		}
-	}
-	#endregion
+    public Color TeamColour
+    {
+        get
+        {
+            return _teamColour;
+        }
+    }
 
-	#region Methods
-	void Awake()
-	{
-		_transform = GetComponent<Transform>();
-		_players = new List<string>();
-		_health = TeamManager.Instance.StartingHealth;
-	}
+    public int Health
+    {
+        get
+        {
+            return _health;
+        }
+    }
 
-	void Start()
-	{
-		
-	}
+    public int Votes
+    {
+        get
+        {
+            return _votes;
+        }
+    }
+    #endregion
 
-	public List<string> GetPlayers()
-	{
-		return _players;
-	}
+    #region Methods
+    void Awake()
+    {
+        _transform = GetComponent<Transform>();
+        _players = new List<string>();
+        _health = TeamManager.Instance.StartingHealth;
+    }
 
-	public void RegisterPlayer(string playerName)
-	{
-		if (_players.Contains(playerName) == false)
-		{
-			_players.Add(playerName);
+    public List<string> GetPlayers()
+    {
+        return _players;
+    }
 
-			List<Lane> lanes = LaneManager.Instance.GetTeamLanes(this);
+    public void RegisterPlayer(string playerName)
+    {
+        if (_players.Contains(playerName) == false)
+        {
+            _players.Add(playerName);
 
-			GameController.Instance.GoToLane(playerName, lanes[Random.Range(0, lanes.Count)].LaneName);
+            List<Lane> lanes = LaneManager.Instance.GetTeamLanes(this);
 
-			_players.Sort();
-			//TODO: update UI list of names
+            GameController.Instance.GoToLane(playerName, lanes[Random.Range(0, lanes.Count)].LaneName);
 
-			SoundManager.Instance.PlayNewPlayer();
-		}
-	}
+            _players.Sort();
 
-	public bool HasPlayer(string playerName)
-	{
-		return _players.Contains(playerName);
-	}
+            // Update UI
+            if (PlayerNamesText != null)
+                PlayerNamesText.text = string.Join(", ", this._players.ToArray());
 
-	public void Hit(int tokenStrength)
-	{
-		_health -= tokenStrength;
+            SoundManager.Instance.PlayNewPlayer();
+        }
+    }
 
-		_healthBar.rectTransform.sizeDelta = new Vector2(_health, _healthBar.rectTransform.sizeDelta.y);
+    public bool HasPlayer(string playerName)
+    {
+        return _players.Contains(playerName);
+    }
 
-		if (_health <= 0)
-		{
-			SoundManager.Instance.PlayBaseDie();
-			_castle.SetActive(false);
-		}
-	}
+    public void Hit(int tokenStrength)
+    {
+        _health -= tokenStrength;
 
-	public void ClearVotes()
-	{
-		_votes = 0;
-	}
+        _healthBar.rectTransform.sizeDelta = new Vector2(_health, _healthBar.rectTransform.sizeDelta.y);
 
-	public void Vote()
-	{
-		_votes++;
-	}
+        if (_health <= 0)
+        {
+            SoundManager.Instance.PlayBaseDie();
+            _castle.SetActive(false);
+        }
+    }
 
-	#endregion
+    public void ClearVotes()
+    {
+        _votes = 0;
+    }
+
+    public void Vote()
+    {
+        _votes++;
+    }
+
+    #endregion
 
 }

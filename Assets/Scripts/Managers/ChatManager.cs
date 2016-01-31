@@ -23,7 +23,7 @@ namespace Assets.Scripts.Managers
 
             // Lane Command
             {
-                @"\B--lane\s(?<lane>[\d]+?)\b", ((msg) =>
+                @"\B--lane[\s]?(?<lane>[\d]+?)\b", ((msg) =>
                 {
                     if(msg.Groups.Count == 2)
                     {

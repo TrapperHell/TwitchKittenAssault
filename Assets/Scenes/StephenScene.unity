@@ -853,7 +853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pulseIntervalInS: 3
   _voteTimeInS: 5
-  _voteIntervalMinInS: 45
+  _voteIntervalMinInS: 40
   _voteIntervalMaxInS: 60
   _emoticon: {fileID: 990250248}
 --- !u!114 &638893889

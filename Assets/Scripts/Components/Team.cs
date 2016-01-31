@@ -159,7 +159,7 @@ public class Team : MonoBehaviour {
 
 	public void UpdateHealthBar()
 	{
-		_healthBar.rectTransform.sizeDelta = new Vector2((_health/ TeamManager.Instance.StartingHealth) * 100.0f, _healthBar.rectTransform.sizeDelta.y);
+		_healthBar.rectTransform.sizeDelta = new Vector2(( (float)_health / TeamManager.Instance.StartingHealth) * 100.0f, _healthBar.rectTransform.sizeDelta.y);
 	}
 
     public void KillOtherTokens()

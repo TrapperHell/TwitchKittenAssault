@@ -137,10 +137,10 @@ public class GameController : MonoSingleton<GameController>
 	public void EndVote()
 	{
 		int maxVote = -1;
-		Team tMax = TeamManager.Instance.GetTeams()[0];
+		Team tMax = TeamManager.Instance.GetTeams()[Random.Range(0, TeamManager.Instance.GetTeams().Count)];
 		foreach (Team t in TeamManager.Instance.GetTeams())
 		{
-			if (t.Votes > maxVote)
+			if ((t.Votes > 0) && (t.Votes > maxVote))
 			{
 				tMax = t;
 			}

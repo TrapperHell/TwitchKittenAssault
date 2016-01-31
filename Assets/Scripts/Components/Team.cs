@@ -139,16 +139,19 @@ public class Team : MonoBehaviour {
 
     public void Heal(int healStrength)
     {
-        _health += healStrength;
-
-        // If Health exceedeed Starting Health (Max), then set to that value
-        if (_health > TeamManager.Instance.StartingHealth)
+        if (_health != TeamManager.Instance.StartingHealth)
         {
-            _health = TeamManager.Instance.StartingHealth;
+            StartCoroutine("FlashHeal");
+            _health += healStrength;
+
+            // If Health exceedeed Starting Health (Max), then set to that value
+            if (_health > TeamManager.Instance.StartingHealth)
+            {
+                _health = TeamManager.Instance.StartingHealth;
+            }
+
+            _healthBar.rectTransform.sizeDelta = new Vector2(_health, _healthBar.rectTransform.sizeDelta.y);
         }
-
-        _healthBar.rectTransform.sizeDelta = new Vector2(_health, _healthBar.rectTransform.sizeDelta.y);
-
     }
 
 	public void ClearVotes()
@@ -165,25 +168,31 @@ public class Team : MonoBehaviour {
     {
         SpriteRenderer castleSprite = _castle.GetComponent<SpriteRenderer>();
         Color originalColor = castleSprite.color;
+        float timeFade = 0;
 
         while (true)
         {
-            if (originalColor == _healColor)
+            // Heal Color Fade In
+            if (_healColor == castleSprite.color)
             {
                 break;
             }
-            castleSprite.color = Color.Lerp(originalColor, _healColor, .2f);
-            yield return new WaitForEndOfFrame();
+            castleSprite.color = Color.Lerp(Color.white, _healColor, timeFade);
+            timeFade += Time.deltaTime;
+            yield return new WaitForFixedUpdate();
         }
 
+        timeFade = 0;
         while (true)
         {
-            if (originalColor == castleSprite.color)
+            // Heal Color Fade Out
+            if (Color.white == castleSprite.color)
             {
                 break;
             }
-            castleSprite.color = Color.Lerp(_healColor, originalColor, .5f);
-            yield return new WaitForEndOfFrame();
+            castleSprite.color = Color.Lerp(_healColor, Color.white, timeFade);
+            timeFade += Time.deltaTime;
+            yield return new WaitForFixedUpdate();
         }
     }
 

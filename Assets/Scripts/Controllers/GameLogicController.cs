@@ -97,7 +97,7 @@ public class GameLogicController : MonoSingleton<GameLogicController>
 
 
 
-		/*
+
 		string playerName = usernames[Random.Range(0, usernames.Length)];
         int lane = -1;
         Team t = TeamManager.Instance.GetTeams()[0];
@@ -137,7 +137,7 @@ public class GameLogicController : MonoSingleton<GameLogicController>
             TeamManager.Instance.AddNewPlayer(playerName, t);
             GameController.Instance.GoToLane(playerName, lane);
         }
-*/
+
 
     }
 

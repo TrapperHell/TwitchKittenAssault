@@ -1,4 +1,4 @@
-# Twitch Kitten Assault
+#![Logo](Logo.png?raw=true)
 
 Twitch Kitten Assault is a small game developed in 48 hours as part of the [2016 Global Game Jam](http://globalgamejam.org/2016/games/twitch-kitten-assault).
 
@@ -16,3 +16,8 @@ Commands are:
 * --lane 0
 
 The --register command is used the first time a viewer joins the Twitch chat, so that the system registers the viewer as a player and assigns him to one of the catstles. The --lane command is used to allow the player to deploy kittens to another lane. Replace 0 with either 1, 2 or 3 depending on the lane in which the kittens should be deployed.
+
+
+### Usage Instructions
+
+Please refer to [TwitchIRC-Unity](https://github.com/Grahnz/TwitchIRC-Unity) for information on how to set up the IRC client in Unity. Then use any screen-streaming software to stream the running game and play from Twitch room.

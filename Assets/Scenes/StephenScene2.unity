@@ -956,11 +956,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29cc3101e7a79452092b5c6eb729d20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  num3: {fileID: 0}
+  num2: {fileID: 0}
+  num1: {fileID: 0}
   _pulseIntervalInS: 3
   _voteTimeInS: 5
   _voteIntervalMinInS: 45
   _voteIntervalMaxInS: 60
   _emoticon: {fileID: 0}
+  _voteHealAmount: 100
 --- !u!114 &638893889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,9 +1041,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29041451efa349408dae55fd08e0bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oauth: oauth:ih62qmxm86j81pzdclpxbnvauzn46q
-  nickName: Kamadake
-  channelName: kamadake
+  oauth: 
+  nickName: 
+  channelName: 
 --- !u!82 &638893895
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1143,7 +1147,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1d362605f8e1e4f2e91ae398642487d6, type: 3}
   - {fileID: 8300000, guid: b8c5eaaf313e94012b91a773223c653e, type: 3}
   _healMeow:
-  - {fileID: 8300000, guid: 3ba7cf3cf7a4fc046ade18f3f11b5559, type: 3}
+  - {fileID: 0}
+  _emoticonYell: {fileID: 0}
+  _audioSource: {fileID: 0}
+  _audioSource2: {fileID: 0}
 --- !u!1 &710541805
 GameObject:
   m_ObjectHideFlags: 0

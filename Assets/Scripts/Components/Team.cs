@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Team : MonoBehaviour {
 
 	#region Public Properties
-
+	public Text PlayerNamesText;
 	#endregion
 
 	#region Private Properties
@@ -98,6 +98,11 @@ public class Team : MonoBehaviour {
 		return _players;
 	}
 
+	public string GetRandomPlayer()
+	{
+		return _players[Random.Range(0, _players.Count)];
+	}
+
 	public void RegisterPlayer(string playerName)
 	{
 		if (_players.Contains(playerName) == false)
@@ -109,7 +114,8 @@ public class Team : MonoBehaviour {
 			GameController.Instance.GoToLane(playerName, lanes[Random.Range(0, lanes.Count)].LaneName);
 
 			_players.Sort();
-			//TODO: update UI list of names
+			if (PlayerNamesText != null)
+				PlayerNamesText.text = string.Join(", ", this._players.ToArray());
 
 
 			SoundManager.Instance.PlayNewPlayer();
@@ -125,7 +131,7 @@ public class Team : MonoBehaviour {
 	{
 		_health -= tokenStrength;
 
-		_healthBar.rectTransform.sizeDelta = new Vector2(_health, _healthBar.rectTransform.sizeDelta.y);
+		UpdateHealthBar();
 
 		if (_health <= 0)
 		{
@@ -152,9 +158,14 @@ public class Team : MonoBehaviour {
                 _health = TeamManager.Instance.StartingHealth;
             }
 
-            _healthBar.rectTransform.sizeDelta = new Vector2(_health, _healthBar.rectTransform.sizeDelta.y);
+			UpdateHealthBar();
         }
     }
+
+	public void UpdateHealthBar()
+	{
+		_healthBar.rectTransform.sizeDelta = new Vector2(( (float)_health / TeamManager.Instance.StartingHealth) * 100.0f, _healthBar.rectTransform.sizeDelta.y);
+	}
 
     public void KillOtherTokens()
     {

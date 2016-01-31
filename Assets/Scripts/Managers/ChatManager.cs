@@ -65,7 +65,27 @@ namespace Assets.Scripts.Managers
                     CommandRouter.RouteCommand(command);
                 }
                 else
-                    Debug.Log(String.Format("{0} says '{1}' => ?", userName, message));
+                {
+                    int count = 0;
+
+                    string[] words = message.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string w in words)
+                    {
+                        if (w.Trim().Equals(GameController.Instance.CurrentEmoticon))
+                        {
+                            count++;
+                        }
+                    }
+
+                    if (count > 0)
+                    {
+                        Debug.Log(String.Format("{0} votes {1} " + count + " times", userName, message));
+                    }
+                    else
+                    {
+                        Debug.Log(String.Format("{0} says '{1}' => ?", userName, message));
+                    }
+                }
             }
         }
 
@@ -86,7 +106,7 @@ namespace Assets.Scripts.Managers
 
             foreach (var matchComm in _commandDictionary)
             {
-                Match match = Regex.Match(message, matchComm.Key);
+                Match match = Regex.Match(message, matchComm.Key, RegexOptions.IgnoreCase);
 
                 if (match.Success && match.Groups != null)
                 {

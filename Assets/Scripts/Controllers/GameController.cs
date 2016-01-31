@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoSingleton<GameController>
 {
@@ -8,7 +9,9 @@ public class GameController : MonoSingleton<GameController>
     #endregion
 
     #region Public Properties
-
+	public Text num3;
+	public Text num2;
+	public Text num1;
     #endregion
 
     #region Private Properties
@@ -21,6 +24,7 @@ public class GameController : MonoSingleton<GameController>
     [SerializeField]
     private float _voteIntervalMaxInS = 60;
 	[SerializeField] private Emoticon _emoticon;
+	[SerializeField] private int _voteHealAmount = 100;
 
     private float _lastPulseTime;
     private float _lastVoteTime;
@@ -31,6 +35,14 @@ public class GameController : MonoSingleton<GameController>
 	{		get
 		{
 			return _voteTimeInS;
+		}
+	}
+
+	public string CurrentEmoticon
+	{
+		get
+		{
+			return _emoticon.CurrentEmoticon();
 		}
 	}
 
@@ -57,8 +69,24 @@ public class GameController : MonoSingleton<GameController>
             FirePulse();
         }
 
-        if (Time.time >= _nextVoteTime)
-        {
+		if ((Time.time >= _nextVoteTime - 3) && (Time.time < _nextVoteTime - 2))
+		{
+			num3.gameObject.SetActive(true);
+		}
+		else if ((Time.time >= _nextVoteTime - 2) && (Time.time < _nextVoteTime - 1))
+		{
+			num3.gameObject.SetActive(false);
+			num2.gameObject.SetActive(true);
+		}
+		else if ((Time.time >= _nextVoteTime - 1) && (Time.time < _nextVoteTime - 0))
+		{
+			num2.gameObject.SetActive(false);
+			num1.gameObject.SetActive(true);
+		}
+		else if (Time.time >= _nextVoteTime)
+		{
+			num1.gameObject.SetActive(false);
+
             StartVote();
             _lastVoteTime = Time.time;
             _nextVoteTime = Time.time + Random.Range(_voteIntervalMinInS, _voteIntervalMaxInS);
@@ -124,4 +152,26 @@ public class GameController : MonoSingleton<GameController>
 		_emoticon.NewEmoticon();
 		_emoticon.gameObject.SetActive(true);
     }
+
+	public void EndVote()
+	{
+		int maxVote = -1;
+		Team tMax = TeamManager.Instance.GetTeams()[Random.Range(0, TeamManager.Instance.GetTeams().Count)];
+		foreach (Team t in TeamManager.Instance.GetTeams())
+		{
+			if ((t.Votes > 0) && (t.Votes > maxVote))
+			{
+				tMax = t;
+			}
+		}
+
+		if (Random.Range(0, 2) == 0)
+		{
+			tMax.KillOtherTokens();
+		}
+		else
+		{
+			tMax.Heal(_voteHealAmount);
+		}
+	}
 }

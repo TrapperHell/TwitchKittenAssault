@@ -142,10 +142,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc03c63f18a344e7a55e2857d749b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerNamesText: {fileID: 0}
   _teamName: 
   _teamColour: {r: 0, g: 0, b: 0, a: 0}
   _healthBar: {fileID: 0}
   _castle: {fileID: 178766}
+  _hitColor: {r: 1, g: 0.13235295, b: 0.13235295, a: 1}
+  _healColor: {r: 0.014705896, g: 1, b: 0.14381352, a: 1}
 --- !u!114 &11449074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -329,6 +332,38 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _hitColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _hitColor.g
+      value: 0.13235295
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _hitColor.b
+      value: 0.13235295
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _healColor.r
+      value: 0.014705896
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _healColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _healColor.b
+      value: 0.14381352
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _hitColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _healColor.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

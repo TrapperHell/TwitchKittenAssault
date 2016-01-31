@@ -19,6 +19,8 @@ public class Emoticon : MonoBehaviour
 
 
 
+
+
     // Use this for initialization
     void Start()
     {
@@ -88,6 +90,7 @@ public class Emoticon : MonoBehaviour
         }
 
         transform.position = originalPos;
+        GameController.Instance.EndVote();
         gameObject.SetActive(false);
     }
 }

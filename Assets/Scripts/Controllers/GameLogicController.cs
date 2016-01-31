@@ -15,7 +15,8 @@ public class GameLogicController : MonoSingleton<GameLogicController>
     #endregion
 
     #region Private Properties
-
+	private string[] usernames = new string[] { "Faitherpuce", "Famouserci", "FamousUnique", "Fangtecnet", "FantasticSlim", "Faroebasnob", "Farratesyla", "Fastersie", "FerdyLuc", "FlamesSpecial", "Flatnes", "Flatortq", "Flearpayal", "Fleterfo", "Fogarac", "Fraserinte", "FunnySly", "GameSosa", "Gaoldisr", "GazetteBrood", "GiveGlossyVampire", "Godetroadix", "GoobleDance", "GotRoses", "Goutaherge", "Grantegisma", "GreatByteRox", "Greedodode", "GreyBing", "Griffontria", "Guldgram", "Hanmicrimag", "HanRadiant", "Heartanom", "Heatelem", "HeheBlaze", "HelloPhobic", "Heroofunde", "HighFinest", "Hightsta", "Hionettier", "HockeyCutie", "HockeyJan", "Faitherpuce", "Famouserci", "FamousUnique", "Fangtecnet", "FantasticSlim", "Faroebasnob", "Farratesyla", "Fastersie", "FerdyLuc", "FlamesSpecial", "Flatnes", "Flatortq", "Flearpayal", "Fleterfo", "Fogarac", "Fraserinte", "FunnySly", "GameSosa", "Gaoldisr", "GazetteBrood", "GiveGlossyVampire", "Godetroadix", "GoobleDance", "GotRoses", "Goutaherge", "Grantegisma", "GreatByteRox", "Greedodode", "GreyBing", "Griffontria", "Guldgram", "Hanmicrimag", "HanRadiant", "Heartanom", "Heatelem", "HeheBlaze", "HelloPhobic", "Heroofunde", "HighFinest", "Hightsta", "Hionettier", "HockeyCutie", "HockeyJan", "Faitherpuce", "Famouserci", "FamousUnique", "Fangtecnet", "FantasticSlim", "Faroebasnob", "Farratesyla", "Fastersie", "FerdyLuc", "FlamesSpecial", "Flatnes", "Flatortq", "Flearpayal", "Fleterfo", "Fogarac", "Fraserinte", "FunnySly", "GameSosa", "Gaoldisr", "GazetteBrood", "GiveGlossyVampire", "Godetroadix", "GoobleDance", "GotRoses", "Goutaherge", "Grantegisma", "GreatByteRox", "Greedodode", "GreyBing", "Griffontria", "Guldgram", "Hanmicrimag", "HanRadiant", "Heartanom", "Heatelem", "HeheBlaze", "HelloPhobic", "Heroofunde", "HighFinest", "Hightsta", "Hionettier", "HockeyCutie", "HockeyJan", "Faitherpuce", "Famouserci", "FamousUnique", "Fangtecnet", "FantasticSlim", "Faroebasnob", "Farratesyla", "Fastersie", "FerdyLuc", "FlamesSpecial", "Flatnes", "Flatortq", "Flearpayal", "Fleterfo", "Fogarac", "Fraserinte", "FunnySly", "GameSosa", "Gaoldisr", "GazetteBrood", "GiveGlossyVampire", "Godetroadix", "GoobleDance", "GotRoses", "Goutaherge", "Grantegisma", "GreatByteRox", "Greedodode", "GreyBing", "Griffontria", "Guldgram", "Hanmicrimag", "HanRadiant", "Heartanom", "Heatelem", "HeheBlaze", "HelloPhobic", "Heroofunde", "HighFinest", "Hightsta", "Hionettier", "HockeyCutie", "HockeyJan", "Faitherpuce", "Famouserci", "FamousUnique", "Fangtecnet", "FantasticSlim", "Faroebasnob", "Farratesyla", "Fastersie", "FerdyLuc", "FlamesSpecial", "Flatnes", "Flatortq", "Flearpayal", "Fleterfo", "Fogarac", "Fraserinte", "FunnySly", "GameSosa", "Gaoldisr", "GazetteBrood", "GiveGlossyVampire", "Godetroadix", "GoobleDance", "GotRoses", "Goutaherge", "Grantegisma", "GreatByteRox", "Greedodode", "GreyBing", "Griffontria", "Guldgram", "Hanmicrimag", "HanRadiant", "Heartanom", "Heatelem", "HeheBlaze", "HelloPhobic", "Heroofunde", "HighFinest", "Hightsta", "Hionettier", "HockeyCutie", "HockeyJan", "Faitherpuce", "Famouserci", "FamousUnique", "Fangtecnet", "FantasticSlim", "Faroebasnob", "Farratesyla", "Fastersie", "FerdyLuc", "FlamesSpecial", "Flatnes", "Flatortq", "Flearpayal", "Fleterfo", "Fogarac", "Fraserinte", "FunnySly", "GameSosa", "Gaoldisr", "GazetteBrood", "GiveGlossyVampire", "Godetroadix", "GoobleDance", "GotRoses", "Goutaherge", "Grantegisma", "GreatByteRox", "Greedodode", "GreyBing", "Griffontria", "Guldgram", "Hanmicrimag", "HanRadiant", "Heartanom", "Heatelem", "HeheBlaze", "HelloPhobic", "Heroofunde", "HighFinest", "Hightsta", "Hionettier", "HockeyCutie", "HockeyJan", "Faitherpuce", "Famouserci", "FamousUnique", "Fangtecnet", "FantasticSlim", "Faroebasnob", "Farratesyla", "Fastersie", "FerdyLuc", "FlamesSpecial", "Flatnes", "Flatortq", "Flearpayal", "Fleterfo", "Fogarac", "Fraserinte", "FunnySly", "GameSosa", "Gaoldisr", "GazetteBrood", "GiveGlossyVampire", "Godetroadix", "GoobleDance", "GotRoses", "Goutaherge", "Grantegisma", "GreatByteRox", "Greedodode", "GreyBing", "Griffontria", "Guldgram", "Hanmicrimag", "HanRadiant", "Heartanom", "Heatelem", "HeheBlaze", "HelloPhobic", "Heroofunde", "HighFinest", "Hightsta", "Hionettier", "HockeyCutie" };
+		
     #endregion
 
 #if MASTER_DEBUG
@@ -53,42 +54,80 @@ public class GameLogicController : MonoSingleton<GameLogicController>
     {
         //Dev cheats go here
 
-        string playerName = "";
+		if (Input.GetKeyDown(KeyCode.W))
+		{
+			TeamManager.Instance.AddNewPlayer(usernames[Random.Range(0, usernames.Length)], TeamManager.Instance.GetTeams()[0]);
+		}
+		if (Input.GetKeyDown(KeyCode.Q))
+		{
+			GameController.Instance.GoToLane(TeamManager.Instance.GetTeams()[0].GetRandomPlayer(), 1);
+		}
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			GameController.Instance.GoToLane(TeamManager.Instance.GetTeams()[0].GetRandomPlayer(), 3);
+		}
+
+
+		if (Input.GetKeyDown(KeyCode.B))
+		{
+			TeamManager.Instance.AddNewPlayer(usernames[Random.Range(0, usernames.Length)], TeamManager.Instance.GetTeams()[1]);
+		}
+		if (Input.GetKeyDown(KeyCode.V))
+		{
+			GameController.Instance.GoToLane(TeamManager.Instance.GetTeams()[1].GetRandomPlayer(), 1);
+		}
+		if (Input.GetKeyDown(KeyCode.N))
+		{
+			GameController.Instance.GoToLane(TeamManager.Instance.GetTeams()[1].GetRandomPlayer(), 2);
+		}
+
+
+		if (Input.GetKeyDown(KeyCode.O))
+		{
+			TeamManager.Instance.AddNewPlayer(usernames[Random.Range(0, usernames.Length)], TeamManager.Instance.GetTeams()[2]);
+		}
+		if (Input.GetKeyDown(KeyCode.I))
+		{
+			GameController.Instance.GoToLane(TeamManager.Instance.GetTeams()[0].GetRandomPlayer(), 2);
+		}
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			GameController.Instance.GoToLane(TeamManager.Instance.GetTeams()[0].GetRandomPlayer(), 3);
+		}
+
+
+
+
+		string playerName = usernames[Random.Range(0, usernames.Length)];
         int lane = -1;
         Team t = TeamManager.Instance.GetTeams()[0];
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            playerName = Random.Range(0, 1000000).ToString();
             t = TeamManager.Instance.GetTeams()[0];
             lane = 1;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            playerName = Random.Range(0, 1000000).ToString();
             t = TeamManager.Instance.GetTeams()[1];
             lane = 2;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            playerName = Random.Range(0, 1000000).ToString();
             t = TeamManager.Instance.GetTeams()[2];
             lane = 3;
         }
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            playerName = Random.Range(0, 1000000).ToString();
             t = TeamManager.Instance.GetTeams()[0];
             lane = 3;
         }
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
-            playerName = Random.Range(0, 1000000).ToString();
             t = TeamManager.Instance.GetTeams()[2];
             lane = 2;
         }
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
-            playerName = Random.Range(0, 1000000).ToString();
             t = TeamManager.Instance.GetTeams()[1];
             lane = 1;
         }

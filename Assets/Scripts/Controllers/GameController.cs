@@ -28,8 +28,7 @@ public class GameController : MonoSingleton<GameController>
     #endregion
 
 	public float VoteTime
-	{
-		get
+	{		get
 		{
 			return _voteTimeInS;
 		}
@@ -107,7 +106,7 @@ public class GameController : MonoSingleton<GameController>
         }
     }
 
-    public void Vote(string playerName)
+	public void Vote(string playerName)
     {
         if ((Time.time >= _lastVoteTime) && (Time.time <= _lastVoteTime + _voteTimeInS))
         {

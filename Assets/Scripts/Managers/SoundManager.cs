@@ -1,57 +1,53 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
-[RequireComponent (typeof (AudioSource))]
-public class SoundManager : MonoSingleton <SoundManager> {
+[RequireComponent(typeof(AudioSource))]
+public class SoundManager : MonoSingleton<SoundManager>
+{
+    #region Constants
 
-	#region Constants
+    #endregion
 
-	#endregion
+    #region Public Properties
 
-	#region Public Properties
+    #endregion
 
-	#endregion
+    #region Private Properties
+    [SerializeField]
+    private List<AudioClip> _genericMeows;
+    [SerializeField]
+    private List<AudioClip> _angryMeows;
+    [SerializeField]
+    private List<AudioClip> _sadMeows;
 
-	#region Private Properties
-	[SerializeField] private List<AudioClip> _genericMeows;
-	[SerializeField] private List<AudioClip> _angryMeows;
-	[SerializeField] private List<AudioClip> _sadMeows;
+    private AudioSource _audioSource;
+    #endregion
 
-	private AudioSource _audioSource;
-	#endregion
+    #region Accessors
 
-	#region Accessors
+    #endregion
 
-	#endregion
+    protected override void AwakeEx()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
-	protected override void AwakeEx ()
-	{
-		_audioSource = GetComponent<AudioSource>();
-	}
+    public void PlayNewPlayer()
+    {
+        if (_genericMeows.Any())
+            _audioSource.PlayOneShot(_genericMeows[Random.Range(0, _genericMeows.Count)]);
+    }
 
-	// Use this for initialization
-	void Start () {
+    public void PlayBaseDie()
+    {
+        if (_sadMeows.Any())
+            _audioSource.PlayOneShot(_sadMeows[Random.Range(0, _sadMeows.Count)]);
+    }
 
-	}
-
-	// Update is called once per frame
-	void Update () {
-
-	}
-
-	public void PlayNewPlayer()
-	{
-		_audioSource.PlayOneShot(_genericMeows[Random.Range(0, _genericMeows.Count)]);
-	}
-
-	public void PlayBaseDie()
-	{
-		_audioSource.PlayOneShot(_sadMeows[Random.Range(0, _sadMeows.Count)]);
-	}
-
-	public void PlayTokenHit()
-	{
-		_audioSource.PlayOneShot(_angryMeows[Random.Range(0, _angryMeows.Count)]);
-	}
+    public void PlayTokenHit()
+    {
+        if (_angryMeows.Any())
+            _audioSource.PlayOneShot(_angryMeows[Random.Range(0, _angryMeows.Count)]);
+    }
 }

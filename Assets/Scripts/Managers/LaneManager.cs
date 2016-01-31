@@ -1,37 +1,37 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class LaneManager : MonoSingleton <LaneManager> {
+public class LaneManager : MonoSingleton<LaneManager>
+{
+    #region Constants
 
-	#region Constants
+    #endregion
 
-	#endregion
+    #region Public Properties
 
-	#region Public Properties
+    #endregion
 
-	#endregion
+    #region Private Properties
+    [SerializeField]
+    private List<Lane> _lanes;
+    #endregion
 
-	#region Private Properties
-	[SerializeField] private List<Lane> _lanes;
-	#endregion
+    public List<Lane> GetLanes()
+    {
+        return _lanes;
+    }
 
-	public List<Lane> GetLanes()
-	{
-		return _lanes;
-	}
+    public List<Lane> GetTeamLanes(Team t)
+    {
+        List<Lane> teamLanes = new List<Lane>();
+        foreach (Lane l in _lanes)
+        {
+            if (l.ConnectedToTeam(t))
+            {
+                teamLanes.Add(l);
+            }
+        }
 
-	public List<Lane> GetTeamLanes(Team t)
-	{
-		List<Lane> teamLanes = new List<Lane>();
-		foreach (Lane l in _lanes)
-		{
-			if (l.ConnectedToTeam(t))
-			{
-				teamLanes.Add(l);
-			}
-		}
-
-		return teamLanes;
-	}
+        return teamLanes;
+    }
 }

@@ -5,12 +5,6 @@ using UnityEngine;
 /// </summary>
 public class PoolManager : MonoSingleton<PoolManager>
 {
-
-
-    #region Public properties
-
-    #endregion
-
     #region Private Properties
     [SerializeField]
     private Token _tokenPrefab;
@@ -47,12 +41,5 @@ public class PoolManager : MonoSingleton<PoolManager>
         _tokenPool.ResizePool(GameLogicController.Instance.tokenInitialPoolSize);
     }
 
-    void Update()
-    {
-
-    }
-
-
     #endregion
-
 }

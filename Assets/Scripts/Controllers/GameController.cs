@@ -1,80 +1,83 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class GameController : MonoSingleton <GameController> {
+public class GameController : MonoSingleton<GameController>
+{
+    #region Constants
 
-	#region Constants
+    #endregion
 
-	#endregion
+    #region Public Properties
 
-	#region Public Properties
+    #endregion
 
-	#endregion
+    #region Private Properties
+    [SerializeField]
+    private float _pulseIntervalInS = 1;
 
-	#region Private Properties
-	[SerializeField] private float _pulseIntervalInS = 1;
+    private float _lastPulseTime;
+    #endregion
 
-	private float _lastPulseTime;
-	#endregion
+    protected override void AwakeEx()
+    {
+        _lastPulseTime = 0;
+    }
 
-	protected override void AwakeEx () {
-		_lastPulseTime = 0;
-	}
+    // Use this for initialization
+    void Start()
+    {
 
-	// Use this for initialization
-	void Start () {
+    }
 
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        if (Time.time >= _lastPulseTime + _pulseIntervalInS)
+        {
+            _lastPulseTime = Time.time;
 
-	// Update is called once per frame
-	void Update () {
-		if (Time.time >= _lastPulseTime + _pulseIntervalInS)
-		{
-			_lastPulseTime = Time.time;
+            FirePulse();
+        }
+    }
 
-			FirePulse();
-		}
-	}
+    public void RegisterPlayer(string playerName)
+    {
+        TeamManager.Instance.AddNewPlayer(playerName);
+    }
 
-	public void RegisterPlayer(string playerName)
-	{
-		TeamManager.Instance.AddNewPlayer(playerName);
-	}
+    public void GoToLane(string playerName, int laneName)
+    {
+        Team t = TeamManager.Instance.GetPlayerTeam(playerName);
 
-	public void GoToLane(string playerName, int laneName)
-	{
-		Team t = TeamManager.Instance.GetPlayerTeam(playerName);
+        if (t != null)
+        {
+            List<Lane> lanes = LaneManager.Instance.GetTeamLanes(t);
 
-		if (t != null)
-		{
-			List<Lane> lanes = LaneManager.Instance.GetTeamLanes(t);
+            foreach (Lane l in lanes)
+            {
+                if (l.ConnectedToTeam(t))
+                {
+                    //Switch the lane
+                    if (l.LaneName == laneName)
+                    {
+                        l.AddPlayer(playerName);
+                    }
+                    else
+                    {
+                        l.RemovePlayer(playerName);
+                    }
+                }
+            }
+        }
+    }
 
-			foreach (Lane l in lanes)
-			{
-				if (l.ConnectedToTeam(t))
-				{
-					//Switch the lane
-					if (l.LaneName == laneName)
-					{
-						l.AddPlayer(playerName);
-					}
-					else
-					{
-						l.RemovePlayer(playerName);
-					}
-				}
-			}
-		}
-	}
+    private void FirePulse()
+    {
+        List<Lane> lanes = LaneManager.Instance.GetLanes();
 
-	private void FirePulse()
-	{
-		List<Lane> lanes = LaneManager.Instance.GetLanes();
-
-		foreach (Lane l in lanes)
-		{
-			l.FirePulse();
-		}
-	}
+        foreach (Lane l in lanes)
+        {
+            l.FirePulse();
+        }
+    }
 }

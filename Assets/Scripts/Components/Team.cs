@@ -21,6 +21,8 @@ public class Team : MonoBehaviour
     private Image _healthBar;
     [SerializeField]
     private GameObject _castle;
+    [SerializeField]
+    private Color _hitColor;
 
     private List<string> _players;
     private Transform _transform;
@@ -133,6 +135,10 @@ public class Team : MonoBehaviour
             SoundManager.Instance.PlayBaseDie();
             _castle.SetActive(false);
         }
+        else
+        {
+            StartCoroutine("FlashHit");
+        }
     }
 
     public void ClearVotes()
@@ -145,6 +151,12 @@ public class Team : MonoBehaviour
         _votes++;
     }
 
+    System.Collections.IEnumerator FlashHit()
+    {
+        SpriteRenderer castleSprite = _castle.GetComponent<SpriteRenderer>();
+        castleSprite.color = _hitColor;
+        yield return new WaitForSeconds(.1f);
+        castleSprite.color = Color.white;
+    }
     #endregion
-
 }

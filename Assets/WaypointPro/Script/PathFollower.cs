@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,12 @@ namespace WaypointControl
         bool _smoothLookForward;
         Transform _transform;
         int _currentIndex;
+        Token token;
+
+        void Start()
+        {
+            this.token = gameObject.GetComponent<Token>();
+        }
 
         public static PathFollower Create(Transform transform)
         {
@@ -139,7 +146,7 @@ namespace WaypointControl
                 deltaPos.z = 0f;
                 _transform.up = Vector3.Lerp(_transform.up, deltaPos.normalized, rotateSpeed * Time.smoothDeltaTime);
             }
-            _transform.position = Vector3.MoveTowards(_transform.position, targetPos, moveSpeed * Time.smoothDeltaTime);
+            _transform.position = Vector3.MoveTowards(_transform.position, targetPos, GetTokenStrengthAffectedSpeed() * Time.smoothDeltaTime);
         }
 
         bool IsOnPoint(int pointIndex) { return (_transform.position - pathData.linePoints[pointIndex]).sqrMagnitude < 0.1f; }
@@ -280,6 +287,21 @@ namespace WaypointControl
 
             //Debug.DrawLine(vPt, vClosestPt, Color.red, 1f);
             return vClosestPt;
+        }
+
+        float GetTokenStrengthAffectedSpeed()
+        {
+            float speed = this.moveSpeed;
+
+            if (this.token != null && this.token.Strength > 1)
+            {
+                int percentageReducion = Math.Min(60, token.Strength * 3);
+
+                if (percentageReducion > 0)
+                    speed = speed - ((speed * percentageReducion) / 100f);
+            }
+
+            return speed;
         }
     }
 }

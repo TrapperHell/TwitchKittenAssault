@@ -151,6 +151,7 @@ public class GameController : MonoSingleton<GameController>
 
 		_emoticon.NewEmoticon();
 		_emoticon.gameObject.SetActive(true);
+		SoundManager.Instance.PlayEmoticonYell();
     }
 
 	public void EndVote()

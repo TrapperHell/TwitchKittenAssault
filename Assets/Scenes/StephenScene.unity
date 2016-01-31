@@ -1241,8 +1241,8 @@ MonoBehaviour:
   num1: {fileID: 559466449}
   _pulseIntervalInS: 3
   _voteTimeInS: 5
-  _voteIntervalMinInS: 45
-  _voteIntervalMaxInS: 60
+  _voteIntervalMinInS: 10
+  _voteIntervalMaxInS: 10
   _emoticon: {fileID: 1891123957}
   _voteHealAmount: 100
 --- !u!114 &638893889
@@ -1426,7 +1426,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a323955dfb88c4198bf51aa14e8a9244, type: 3}
   - {fileID: 8300000, guid: 1d362605f8e1e4f2e91ae398642487d6, type: 3}
   - {fileID: 8300000, guid: b8c5eaaf313e94012b91a773223c653e, type: 3}
-  _healMeow: []
+  _healMeow:
+  - {fileID: 8300000, guid: be59af0602f5f49789fda20d21b594b0, type: 3}
+  _emoticonYell: {fileID: 8300000, guid: 644ccbe1357f248c18da1373d6d6f046, type: 3}
 --- !u!1 &692074913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2848,7 +2850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627ca93516e2941beab2efdf483aeb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _magnitude: 0.1
+  _magnitude: 0.075
   _dampAfterDuration: 5
   _emoticons:
   - {fileID: 21300000, guid: 678d12790bb450242ac2b0ad8154cbff, type: 3}

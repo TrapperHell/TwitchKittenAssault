@@ -6,7 +6,7 @@ namespace Assets.Scripts.Managers
     public class ChatSimulationManager : MonoBehaviour
     {
         string[] chatLines = new string[]
-		{
+        {
             ":user1!user1@user1.tmi.twitch.tv PRIVMSG #kamadake :hello folks",
             ":user1!user1@user1.tmi.twitch.tv PRIVMSG #kamadake :--register",
 

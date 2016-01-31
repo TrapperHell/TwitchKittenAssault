@@ -48,7 +48,6 @@ public class Emoticon : MonoBehaviour
 
     public string CurrentEmoticon()
     {
-		return "FrankerZ";
         return _emoticonNames[_selectedEmoticon];
     }
 
@@ -89,7 +88,7 @@ public class Emoticon : MonoBehaviour
         }
 
         transform.position = originalPos;
-		GameController.Instance.EndVote();
+        GameController.Instance.EndVote();
         gameObject.SetActive(false);
     }
 }

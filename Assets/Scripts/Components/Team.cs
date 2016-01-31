@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Team : MonoBehaviour {
 
 	#region Public Properties
-
+	public Text PlayerNamesText;
 	#endregion
 
 	#region Private Properties
@@ -109,7 +109,8 @@ public class Team : MonoBehaviour {
 			GameController.Instance.GoToLane(playerName, lanes[Random.Range(0, lanes.Count)].LaneName);
 
 			_players.Sort();
-			//TODO: update UI list of names
+			if (PlayerNamesText != null)
+				PlayerNamesText.text = string.Join(", ", this._players.ToArray());
 
 
 			SoundManager.Instance.PlayNewPlayer();

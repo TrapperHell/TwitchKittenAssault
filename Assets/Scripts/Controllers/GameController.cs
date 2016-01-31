@@ -3,81 +3,110 @@ using UnityEngine;
 
 public class GameController : MonoSingleton<GameController>
 {
-    #region Constants
+	#region Constants
 
-    #endregion
+	#endregion
 
-    #region Public Properties
+	#region Public Properties
 
-    #endregion
+	#endregion
 
-    #region Private Properties
-    [SerializeField]
-    private float _pulseIntervalInS = 1;
+	#region Private Properties
+	[SerializeField] private float _pulseIntervalInS = 1;
+	[SerializeField] private float _voteTimeInS = 1;
+	[SerializeField] private float _voteIntervalMinInS = 45;
+	[SerializeField] private float _voteIntervalMaxInS = 60;
 
-    private float _lastPulseTime;
-    #endregion
+	private float _lastPulseTime;
+	private float _lastVoteTime;
+	private float _nextVoteTime;
+	#endregion
 
     protected override void AwakeEx()
     {
-        _lastPulseTime = 0;
-    }
+		_lastPulseTime = 0;
+		_lastVoteTime = 0;
+		_nextVoteTime = Random.Range(_voteIntervalMinInS, _voteIntervalMaxInS);
+	}
 
-    // Use this for initialization
+	// Use this for initialization
     void Start()
     {
 
-    }
+	}
 
-    // Update is called once per frame
+	// Update is called once per frame
     void Update()
     {
-        if (Time.time >= _lastPulseTime + _pulseIntervalInS)
-        {
-            _lastPulseTime = Time.time;
+		if (Time.time >= _lastPulseTime + _pulseIntervalInS)
+		{
+			_lastPulseTime = Time.time;
 
-            FirePulse();
-        }
-    }
+			FirePulse();
+		}
 
-    public void RegisterPlayer(string playerName)
-    {
-        TeamManager.Instance.AddNewPlayer(playerName);
-    }
+		if (Time.time >= _nextVoteTime)
+		{
+			StartVote();
+			_lastVoteTime = Time.time;
+			_nextVoteTime = Time.time + Random.RandomRange(_voteIntervalMinInS, _voteIntervalMaxInS);
+	}
+	}
 
-    public void GoToLane(string playerName, int laneName)
-    {
-        Team t = TeamManager.Instance.GetPlayerTeam(playerName);
+	public void RegisterPlayer(string playerName)
+	{
+		TeamManager.Instance.AddNewPlayer(playerName);
+	}
 
-        if (t != null)
-        {
-            List<Lane> lanes = LaneManager.Instance.GetTeamLanes(t);
+	public void GoToLane(string playerName, int laneName)
+	{
+		Team t = TeamManager.Instance.GetPlayerTeam(playerName);
 
-            foreach (Lane l in lanes)
-            {
-                if (l.ConnectedToTeam(t))
-                {
-                    //Switch the lane
-                    if (l.LaneName == laneName)
-                    {
-                        l.AddPlayer(playerName);
-                    }
-                    else
-                    {
-                        l.RemovePlayer(playerName);
-                    }
-                }
-            }
-        }
-    }
+		if (t != null)
+		{
+			List<Lane> lanes = LaneManager.Instance.GetTeamLanes(t);
 
-    private void FirePulse()
-    {
-        List<Lane> lanes = LaneManager.Instance.GetLanes();
+			foreach (Lane l in lanes)
+			{
+				if (l.ConnectedToTeam(t))
+				{
+					//Switch the lane
+					if (l.LaneName == laneName)
+					{
+						l.AddPlayer(playerName);
+					}
+					else
+					{
+						l.RemovePlayer(playerName);
+					}
+				}
+			}
+		}
+	}
 
-        foreach (Lane l in lanes)
-        {
-            l.FirePulse();
-        }
-    }
+	private void FirePulse()
+	{
+		List<Lane> lanes = LaneManager.Instance.GetLanes();
+
+		foreach (Lane l in lanes)
+		{
+			l.FirePulse();
+		}
+	}
+
+	public void Vote(string playerName)
+	{
+		if ((Time.time >= _lastVoteTime) && (Time.time <= _lastVoteTime + _voteTimeInS))
+		{
+			TeamManager.Instance.Vote(playerName);
+		}
+	}
+
+	public void StartVote()
+	{
+		foreach (Team t in TeamManager.Instance.GetTeams())
+		{
+			t.ClearVotes();
+		}
+	}
 }

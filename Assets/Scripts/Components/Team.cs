@@ -13,10 +13,13 @@ public class Team : MonoBehaviour {
 	[SerializeField] private string _teamName;
 	[SerializeField] private Color _teamColour;
 	[SerializeField] private Image _healthBar;
+	[SerializeField] private GameObject _castle;
 
 	private List<string> _players;
 	private Transform _transform;
 	private int _health;
+
+	private int _votes;
 	#endregion
 
 	#region Accessors
@@ -55,6 +58,22 @@ public class Team : MonoBehaviour {
 			return _teamColour;
 		}
 	}
+
+	public int Health
+	{
+		get
+		{
+			return _health;
+		}
+	}
+
+	public int Votes
+	{
+		get
+		{
+			return _votes;
+		}
+	}
 	#endregion
 
 	#region Methods
@@ -87,6 +106,8 @@ public class Team : MonoBehaviour {
 
 			_players.Sort();
 			//TODO: update UI list of names
+
+			SoundManager.Instance.PlayNewPlayer();
 		}
 	}
 
@@ -103,9 +124,19 @@ public class Team : MonoBehaviour {
 
 		if (_health <= 0)
 		{
-			//TODO: DESTROY BASE!!!
-			D.log("BASE DESTROYED!!! - Team: " + _teamName);
+			SoundManager.Instance.PlayBaseDie();
+			_castle.SetActive(false);
 		}
+	}
+
+	public void ClearVotes()
+	{
+		_votes = 0;
+	}
+
+	public void Vote()
+	{
+		_votes++;
 	}
 
 	#endregion

@@ -1142,6 +1142,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a323955dfb88c4198bf51aa14e8a9244, type: 3}
   - {fileID: 8300000, guid: 1d362605f8e1e4f2e91ae398642487d6, type: 3}
   - {fileID: 8300000, guid: b8c5eaaf313e94012b91a773223c653e, type: 3}
+  _healMeow:
+  - {fileID: 8300000, guid: 3ba7cf3cf7a4fc046ade18f3f11b5559, type: 3}
 --- !u!1 &710541805
 GameObject:
   m_ObjectHideFlags: 0

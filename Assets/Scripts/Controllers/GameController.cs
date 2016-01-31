@@ -123,6 +123,5 @@ public class GameController : MonoSingleton<GameController>
 
 		_emoticon.NewEmoticon();
 		_emoticon.gameObject.SetActive(true);
-
     }
 }

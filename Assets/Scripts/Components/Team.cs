@@ -142,6 +142,8 @@ public class Team : MonoBehaviour {
         if (_health != TeamManager.Instance.StartingHealth)
         {
             StartCoroutine("FlashHeal");
+            SoundManager.Instance.PlayBaseHeal();
+
             _health += healStrength;
 
             // If Health exceedeed Starting Health (Max), then set to that value
@@ -151,6 +153,18 @@ public class Team : MonoBehaviour {
             }
 
             _healthBar.rectTransform.sizeDelta = new Vector2(_health, _healthBar.rectTransform.sizeDelta.y);
+        }
+    }
+
+    public void KillOtherTokens()
+    {
+        List<Token> tokensInUse = PoolManager.Instance.TokenPool.InUse;
+        foreach (Token token in tokensInUse)
+        {
+            if (token.SourceTeam != this)
+            {
+                token.Release();
+            }
         }
     }
 
@@ -204,5 +218,6 @@ public class Team : MonoBehaviour {
         castleSprite.color = Color.white; 
     }
 	#endregion
+
 
 }

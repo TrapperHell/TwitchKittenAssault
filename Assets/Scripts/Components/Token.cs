@@ -1,17 +1,26 @@
 ﻿using UnityEngine;
+<<<<<<< HEAD
 using System.Collections;
+using System.Collections.Generic;
+=======
+>>>>>>> origin/master
 
-public class Token : MonoBehaviour, IPoolable {
+public class Token : MonoBehaviour, IPoolable
+{
 
 	#region Public Properties
 
 	#endregion
 
 	#region Private Properties
-	[SerializeField] private string _tokenTag = "Token";
-	[SerializeField] private string _baseTag = "Base";
-	[SerializeField] private SpriteRenderer _spriteRenderer;
-	[SerializeField] private TextMesh _textMesh;
+    [SerializeField]
+    private string _tokenTag = "Token";
+    [SerializeField]
+    private string _baseTag = "Base";
+    [SerializeField]
+    private SpriteRenderer _spriteRenderer;
+    [SerializeField]
+    private TextMesh _textMesh;
 	private int _strength;
 	private Team _sourceTeam;
 
@@ -48,12 +57,14 @@ public class Token : MonoBehaviour, IPoolable {
 	#region Methods
 
 	// Use this for initialization
-	void Start () {
+    void Start()
+    {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+    void Update()
+    {
 	
 	}
 
@@ -80,6 +91,7 @@ public class Token : MonoBehaviour, IPoolable {
 						//See assumption above
 						other.GetHit(thisStrength);
 						GetHit(otherStrength);
+						SoundManager.Instance.PlayRandomGenericMeow();
 					}
 				}
 			}
@@ -92,10 +104,38 @@ public class Token : MonoBehaviour, IPoolable {
 			{
 				if (t != _sourceTeam)
 				{
-					t.Hit(Strength);
+					if (t.Health <= 0)
+					{
+						int alive = 0;
+						List<Team> ts = TeamManager.Instance.GetTeams();
 
-					_strength = 0; //Just to be safe
-					PoolManager.Instance.TokenPool.Release(this);
+						foreach (Team tx in ts)
+						{
+							if (tx.Health > 0)
+							{
+								alive++;
+							
+								if ((tx != t) && (tx != _sourceTeam))
+								{
+									WaypointControl.TokenMoveManager.Instance.MoveToken(gameObject, t.Name, tx.Name);
+								}
+							}
+						}
+
+						if (alive <= 1)
+						{
+							Time.timeScale = 0;
+						}
+					}
+					else
+					{
+						SoundManager.Instance.PlayRandomGenericMeow();
+
+						t.Hit(Strength);
+
+						_strength = 0; //Just to be safe
+						PoolManager.Instance.TokenPool.Release(this);
+					}
 				}
 			}
 		}
@@ -104,6 +144,7 @@ public class Token : MonoBehaviour, IPoolable {
 	private void GetHit(int opposingStrength)
 	{
 		_strength -= opposingStrength;
+		_textMesh.text = _strength.ToString();
 
 		if (_strength <= 0)
 		{

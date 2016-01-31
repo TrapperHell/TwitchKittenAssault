@@ -49,12 +49,54 @@ public class GameLogicController : MonoSingleton <GameLogicController> {
 	
 	void Update () {
 		
-		#if MASTER_DEBUG
 		//Dev cheats go here
 
+		string playerName = "";
+		int lane = -1;
+		Team t = TeamManager.Instance.GetTeams()[0];
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			playerName = Random.Range(0, 1000000).ToString();
+			t = TeamManager.Instance.GetTeams()[0];
+			lane = 1;
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha2))
+		{
+			playerName = Random.Range(0, 1000000).ToString();
+			t = TeamManager.Instance.GetTeams()[1];
+			lane = 2;
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha3))
+		{
+			playerName = Random.Range(0, 1000000).ToString();
+			t = TeamManager.Instance.GetTeams()[2];
+			lane = 3;
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha0))
+		{
+			playerName = Random.Range(0, 1000000).ToString();
+			t = TeamManager.Instance.GetTeams()[0];
+			lane = 3;
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha9))
+		{
+			playerName = Random.Range(0, 1000000).ToString();
+			t = TeamManager.Instance.GetTeams()[2];
+			lane = 2;
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha8))
+		{
+			playerName = Random.Range(0, 1000000).ToString();
+			t = TeamManager.Instance.GetTeams()[1];
+			lane = 1;
+		}
 
+		if (lane != -1)
+		{
+			TeamManager.Instance.AddNewPlayer(playerName, t);
+			GameController.Instance.GoToLane(playerName, lane);
+		}
 		
-		#endif
 		
 	}
 	

@@ -77,4 +77,22 @@ public class TeamManager : MonoSingleton <TeamManager> {
 
 		minT.RegisterPlayer(playerName);
 	}
+
+	public void AddNewPlayer(string playerName, Team t)
+	{
+		t.RegisterPlayer(playerName);
+	}
+
+	public void Vote(string playerName)
+	{
+		foreach (Team t in _teams)
+		{
+			if (t.HasPlayer(playerName))
+			{
+				t.Vote();
+				break;
+			}
+		}
+	}
+		
 }

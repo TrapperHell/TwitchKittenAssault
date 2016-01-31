@@ -20,11 +20,19 @@ public class GameController : MonoSingleton<GameController>
     private float _voteIntervalMinInS = 45;
     [SerializeField]
     private float _voteIntervalMaxInS = 60;
+	[SerializeField] private Emoticon _emoticon;
 
     private float _lastPulseTime;
     private float _lastVoteTime;
     private float _nextVoteTime;
     #endregion
+
+	public float VoteTime
+	{		get
+		{
+			return _voteTimeInS;
+		}
+	}
 
     protected override void AwakeEx()
     {
@@ -112,5 +120,9 @@ public class GameController : MonoSingleton<GameController>
         {
             t.ClearVotes();
         }
+
+		_emoticon.NewEmoticon();
+		_emoticon.gameObject.SetActive(true);
+
     }
 }
